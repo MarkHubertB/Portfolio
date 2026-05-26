@@ -464,7 +464,7 @@
         align-items: center;
         max-width: fit-content;
         font-family: var(--mono);
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 500;
         letter-spacing: 0.1em;
         text-transform: uppercase;
@@ -497,20 +497,20 @@
 
       .hero-name {
         font-family: var(--serif);
-        font-size: clamp(48px, 7.5vw, 90px);
-        line-height: 0.96;
+        font-size: clamp(42px, 6.6vw, 78px);
+        line-height: 0.97;
         font-weight: 700;
-        letter-spacing: -0.04em;
-        margin-bottom: 1.2rem;
-        max-width: 12ch;
+        letter-spacing: -0.035em;
+        margin-bottom: 1rem;
+        max-width: 13ch;
         animation: fadeUp 0.8s 0.1s ease both;
       }
 
       .hero-name-sub {
         display: block;
-        margin-top: 1rem;
+        margin-top: 0.85rem;
         font-family: var(--sans);
-        font-size: clamp(18px, 2.2vw, 24px);
+        font-size: clamp(16px, 1.85vw, 21px);
         line-height: 1.35;
         font-weight: 400;
         letter-spacing: 0;
@@ -523,12 +523,12 @@
       }
 
       .hero-summary {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 300;
         color: var(--ink-muted);
         max-width: 520px;
-        line-height: 1.7;
-        margin-bottom: 2.5rem;
+        line-height: 1.68;
+        margin-bottom: 2rem;
         animation: fadeUp 0.8s 0.2s ease both;
       }
 
@@ -563,7 +563,7 @@
       .hero-caption-name {
         display: block;
         font-family: var(--sans);
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 700;
         letter-spacing: 0.08em;
         color: var(--ink);
@@ -574,10 +574,16 @@
         display: block;
         margin-top: 0.35rem;
         font-family: var(--mono);
-        font-size: 11px;
+        font-size: 10px;
         letter-spacing: 0.18em;
         color: var(--accent-mid);
         text-transform: uppercase;
+      }
+
+      .hero-highlight {
+        color: var(--accent-mid);
+        font-style: italic;
+        font-family: var(--serif);
       }
 
       .btn {
@@ -585,7 +591,7 @@
         align-items: center;
         justify-content: center;
         font-family: var(--sans);
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 500;
         letter-spacing: 0.06em;
         text-transform: uppercase;
@@ -1510,10 +1516,10 @@
           flex: 0 0 42%;
         }
         .hero-name {
-          font-size: clamp(42px, 6vw, 64px);
+          font-size: clamp(38px, 5.8vw, 58px);
         }
         .hero-summary {
-          font-size: 16px;
+          font-size: 15px;
           max-width: 34rem;
         }
         .hero-bg-text {
@@ -1605,14 +1611,14 @@
           font-size: 15px;
         }
         .hero-name {
-          font-size: clamp(38px, 9vw, 68px);
+          font-size: clamp(34px, 8.6vw, 56px);
         }
         .hero-bg-text {
           font-size: clamp(84px, 24vw, 160px);
           left: -3%;
         }
         .hero-name-sub {
-          font-size: 16px;
+          font-size: 15px;
         }
         .project-item {
           grid-template-columns: 42px minmax(0, 1fr) auto;
@@ -1738,19 +1744,19 @@
           display: none;
         }
         .hero-tag {
-          font-size: 11px;
+          font-size: 10px;
           padding: 4px 10px;
         }
         .hero-name {
-          font-size: clamp(34px, 11vw, 58px);
+          font-size: clamp(32px, 10vw, 50px);
           margin-bottom: 1rem;
         }
         .hero-name-sub {
-          font-size: 15px;
+          font-size: 14px;
           margin-top: 0.8rem;
         }
         .hero-summary {
-          font-size: 16px;
+          font-size: 14px;
           margin-bottom: 2rem;
         }
         .hero-caption {
@@ -1879,10 +1885,9 @@
             <div class="hero-left">
               <div class="hero-tag">I DESIGN &amp; BUILD RELIABLE SYSTEMS</div>
               <h1 class="hero-name">
-                Turning complex problems into reliable systems.
-                <span class="hero-name-sub"
-                  >Built for <em>work</em> in the <em>real world.</em></span
-                >
+                Turning
+                <span class="hero-highlight">complex problems</span> into
+                <span class="hero-highlight">reliable systems.</span>
               </h1>
               <p class="hero-summary">
                 Computer Engineering student building reliable tech for
