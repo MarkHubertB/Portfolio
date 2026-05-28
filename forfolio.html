@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -51,8 +51,8 @@
         --accent-light: #1e1a12;
         --accent-mid: #e8c47a;
         --rule: rgba(255, 255, 255, 0.08);
-        --serif: "DM Serif Display", serif;
-        --sans: "Outfit", sans-serif;
+        --serif: "Cormorant Garamond", serif;
+        --sans: "Inter", sans-serif;
         --mono: "DM Mono", monospace;
       }
 
@@ -391,23 +391,24 @@
       /* Two-column hero layout */
       .hero-grid {
         display: flex;
-        gap: 2.5rem;
-        align-items: center;
+        gap: 3rem;
+        align-items: start;
         width: 100%;
       }
 
       .hero-left {
-        flex: 0 0 58%;
+        flex: 0 0 56%;
         text-align: left;
+        max-width: 600px;
       }
 
       .hero-right {
-        flex: 0 0 42%;
+        flex: 0 0 44%;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
         justify-content: center;
-        gap: 0.9rem;
+        gap: 1rem;
       }
 
       .profile-photo {
@@ -465,15 +466,15 @@
         align-items: center;
         max-width: fit-content;
         font-family: var(--mono);
-        font-size: 11px;
+        font-size: 10px;
         font-weight: 500;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.16em;
         text-transform: uppercase;
         color: var(--accent-mid);
         border: 1px solid rgba(201, 168, 76, 0.5);
-        padding: 4px 12px;
+        padding: 5px 12px;
         border-radius: 2px;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
         box-shadow:
           0 0 18px rgba(201, 168, 76, 0.15),
           inset 0 0 12px rgba(201, 168, 76, 0.05);
@@ -498,38 +499,26 @@
 
       .hero-name {
         font-family: var(--serif);
-        font-size: clamp(42px, 6.6vw, 78px);
-        line-height: 0.97;
+        font-size: clamp(48px, 6vw, 74px);
+        line-height: 1.03;
         font-weight: 700;
-        letter-spacing: -0.035em;
-        margin-bottom: 1rem;
-        max-width: 13ch;
+        letter-spacing: -0.02em;
+        margin-bottom: 1.15rem;
+        max-width: 620px;
         animation: fadeUp 0.8s 0.1s ease both;
       }
 
-      .hero-name-sub {
+      .hero-name > span {
         display: block;
-        margin-top: 0.85rem;
-        font-family: var(--sans);
-        font-size: clamp(16px, 1.85vw, 21px);
-        line-height: 1.35;
-        font-weight: 400;
-        letter-spacing: 0;
-        color: var(--ink-muted);
-      }
-
-      .hero-name-sub em {
-        font-style: italic;
-        color: var(--accent-mid);
       }
 
       .hero-summary {
         font-size: 16px;
-        font-weight: 300;
+        font-weight: 400;
         color: var(--ink-muted);
-        max-width: 520px;
-        line-height: 1.68;
-        margin-bottom: 2rem;
+        max-width: 575px;
+        line-height: 1.8;
+        margin-bottom: 2.25rem;
         animation: fadeUp 0.8s 0.2s ease both;
       }
 
@@ -538,13 +527,14 @@
         gap: 1rem;
         flex-wrap: wrap;
         animation: fadeUp 0.8s 0.3s ease both;
+        margin-top: 0.25rem;
       }
 
       .hero-caption {
         width: 100%;
         max-width: 480px;
         padding-top: 0.25rem;
-        text-align: left;
+        text-align: center;
       }
 
       .hero-caption::after {
@@ -1857,13 +1847,13 @@
             <div class="hero-left">
               <div class="hero-tag">I DESIGN &amp; BUILD RELIABLE SYSTEMS</div>
               <h1 class="hero-name">
-                Turning <span class="hero-highlight">complex problems</span>
-                into <span class="hero-highlight">reliable systems.</span>
+                <span>Turning complex</span>
+                <span>problems into</span>
+                <span class="hero-highlight">reliable systems.</span>
               </h1>
               <p class="hero-summary">
-                Computer Engineering student building reliable tech for
-                communities — from disaster-response PWAs and AI-assisted tools
-                to embedded systems and microcontrollers.
+                Computer Engineering student building embedded systems,
+                AI-assisted applications, and community-focused technology.
               </p>
               <div class="hero-cta">
                 <a href="#projects" class="btn btn-primary">VIEW MY PROJECTS</a>
@@ -2861,3 +2851,7 @@
     </script>
   </body>
 </html>
+
+
+
+
