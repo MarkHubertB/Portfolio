@@ -1,1750 +1,925 @@
-﻿<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Mark Hubert Boctulan is a Computer Engineering student building accessible web apps, AI tools, and embedded systems for real-world use." />
-    <meta property="og:title" content="Mark Hubert Boctulan | Portfolio" />
-    <meta property="og:description" content="Computer Engineering student building accessible web apps, AI tools, and embedded systems for real-world use." />
-    <meta property="og:image" content="assets/Profile.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Mark Hubert Boctulan | Portfolio" />
-    <meta name="twitter:description" content="Computer Engineering student building accessible web apps, AI tools, and embedded systems for real-world use." />
-    <meta name="twitter:image" content="assets/Profile.png" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230e0d0b'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Georgia,serif' font-size='20' fill='%23c9a84c'%3EMHB%3C/text%3E%3C/svg%3E" />
-    <title>Mark Hubert Boctulan â€” Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-    <style>
-      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-      :root {
-        --ink: #f0ece4;
-        --ink-muted: #9a9080;
-        --ink-faint: rgba(240,236,228,0.06);
-        --bg: #0e0d0b;
-        --bg-raised: #111010;
-        --accent: #c9a84c;
-        --accent-mid: #e8c47a;
-        --accent-dim: rgba(201,168,76,0.07);
-        --rule: rgba(255,255,255,0.08);
-        --rule-mid: rgba(255,255,255,0.14);
-        --serif: "Cormorant Garamond", Georgia, serif;
-        --sans: "Inter", sans-serif;
-        --mono: "DM Mono", "Courier New", monospace;
-      }
-
-      html { scroll-behavior: smooth; }
-
-      body {
-        font-family: var(--sans);
-        background: var(--bg);
-        color: var(--ink);
-        line-height: 1.65;
-        font-size: 16px;
-        overflow-x: hidden;
-      }
-
-      img { max-width: 100%; height: auto; display: block; }
-
-      /* Engineering graph-paper grid â€” barely visible */
-      body::before {
-        content: '';
-        position: fixed;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(201,168,76,0.018) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(201,168,76,0.018) 1px, transparent 1px);
-        background-size: 72px 72px;
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      /* Warm vignette */
-      body::after {
-        content: '';
-        position: fixed;
-        inset: 0;
-        background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.04) 0%, transparent 65%);
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      /* â”€â”€ LAYOUT â”€â”€ */
-      .container {
-        max-width: 1080px;
-        margin: 0 auto;
-        padding: 0 2.5rem;
-        position: relative;
-        z-index: 1;
-      }
-
-      section { padding: 6rem 0; }
-
-      .hr-eng {
-        border: none;
-        border-top: 1px solid var(--rule);
-        margin: 0;
-        position: relative;
-        z-index: 1;
-      }
-
-      /* â”€â”€ NAV â”€â”€ */
-      nav {
-        position: fixed;
-        top: 0; left: 0; right: 0;
-        z-index: 200;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1.1rem 2.5rem;
-        border-bottom: 1px solid var(--rule);
-        background: rgba(14,13,11,0.94);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-      }
-
-      .nav-logo {
-        font-family: var(--mono);
-        font-size: 11px;
-        color: var(--accent);
-        letter-spacing: 0.15em;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-      }
-
-      .nav-logo-sep {
-        width: 1px;
-        height: 12px;
-        background: var(--rule-mid);
-        display: inline-block;
-      }
-
-      .nav-logo-meta {
-        color: var(--ink-muted);
-        font-size: 10px;
-        letter-spacing: 0.1em;
-      }
-
-      .nav-links {
-        display: flex;
-        list-style: none;
-        gap: 2.25rem;
-      }
-
-      .nav-links a {
-        font-family: var(--mono);
-        font-size: 10px;
-        letter-spacing: 0.16em;
-        color: var(--ink-muted);
-        text-decoration: none;
-        text-transform: uppercase;
-        transition: color 0.12s;
-        position: relative;
-      }
-
-      .nav-links a::after {
-        content: '';
-        position: absolute;
-        bottom: -3px; left: 0;
-        width: 0; height: 1px;
-        background: var(--accent);
-        transition: width 0.15s;
-      }
-
-      .nav-links a:hover { color: var(--accent); }
-      .nav-links a:hover::after { width: 100%; }
-
-      .nav-toggle {
-        display: none;
-        background: none;
-        border: 1px solid var(--rule-mid);
-        padding: 0.45rem 0.6rem;
-        cursor: pointer;
-        color: var(--ink-muted);
-        gap: 0;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .nav-toggle-lines {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        width: 16px;
-      }
-
-      .nav-toggle-lines span {
-        display: block;
-        height: 1px;
-        background: currentColor;
-        transition: opacity 0.15s;
-      }
-
-      /* â”€â”€ HERO â€” ENGINEERING TITLE BLOCK â”€â”€ */
-      .hero {
-        min-height: 100svh;
-        min-height: 100vh;
-        padding-top: 7rem;
-        padding-bottom: 4rem;
-        display: flex;
-        align-items: center;
-        position: relative;
-      }
-
-      .hero-inner {
-        display: grid;
-        grid-template-columns: 1fr 300px;
-        gap: 5rem;
-        align-items: center;
-        width: 100%;
-      }
-
-      /* Left: title block */
-      .hero-left { display: flex; flex-direction: column; gap: 0; }
-
-      /* Revision / metadata row â€” like a drawing title block header */
-      .hero-meta-bar {
-        display: flex;
-        align-items: center;
-        gap: 1.25rem;
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.18em;
-        color: var(--ink-muted);
-        text-transform: uppercase;
-        margin-bottom: 2rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid var(--rule);
-      }
-
-      .meta-bullet {
-        width: 4px; height: 4px;
-        border-radius: 50%;
-        background: var(--accent);
-        opacity: 0.6;
-        flex-shrink: 0;
-      }
-
-      /* The name â€” architectural element, not just big text */
-      .hero-name {
-        font-family: var(--serif);
-        font-weight: 600;
-        line-height: 0.88;
-        letter-spacing: -0.025em;
-        color: var(--ink);
-        padding-left: 1.75rem;
-        border-left: 2px solid var(--accent);
-        margin-bottom: 2.5rem;
-      }
-
-      .hero-name-first {
-        display: block;
-        font-size: clamp(3.5rem, 7vw, 7rem);
-      }
-
-      .hero-name-last {
-        display: block;
-        font-size: clamp(3.5rem, 7vw, 7rem);
-        color: var(--ink-muted);
-      }
-
-      .hero-name-role {
-        display: block;
-        font-family: var(--mono);
-        font-weight: 400;
-        font-size: clamp(0.65rem, 1.2vw, 0.75rem);
-        letter-spacing: 0.22em;
-        color: var(--accent);
-        margin-top: 1.2rem;
-        text-transform: uppercase;
-      }
-
-      /* Spec row â€” function / status / domain */
-      .hero-spec-row {
-        display: flex;
-        gap: 0;
-        border-top: 1px solid var(--rule);
-        border-bottom: 1px solid var(--rule);
-        margin-bottom: 2rem;
-      }
-
-      .hero-spec-item {
-        flex: 1;
-        padding: 0.85rem 1.25rem;
-        border-right: 1px solid var(--rule);
-        display: flex;
-        flex-direction: column;
-        gap: 0.3rem;
-      }
-
-      .hero-spec-item:last-child { border-right: none; }
-      .hero-spec-item:first-child { padding-left: 0; }
-
-      .spec-label {
-        font-family: var(--mono);
-        font-size: 8px;
-        letter-spacing: 0.2em;
-        color: var(--ink-muted);
-        text-transform: uppercase;
-      }
-
-      .spec-val {
-        font-size: 13px;
-        color: var(--ink);
-        font-weight: 400;
-      }
-
-      .hero-desc {
-        font-size: 15px;
-        color: var(--ink-muted);
-        max-width: 480px;
-        line-height: 1.8;
-        font-weight: 300;
-        margin-bottom: 2rem;
-      }
-
-      .hero-cta {
-        display: flex;
-        gap: 0.75rem;
-        flex-wrap: wrap;
-      }
-
-      /* Mechanical buttons â€” sharp corners, no border-radius */
-      .btn-eng {
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.2em;
-        padding: 0.8rem 1.75rem;
-        text-decoration: none;
-        text-transform: uppercase;
-        display: inline-block;
-        transition: all 0.12s;
-        border: 1px solid transparent;
-      }
-
-      .btn-eng-solid {
-        background: var(--accent);
-        color: #0e0d0b;
-        border-color: var(--accent);
-      }
-
-      .btn-eng-solid:hover { background: var(--accent-mid); border-color: var(--accent-mid); }
-
-      .btn-eng-ghost {
-        background: transparent;
-        color: var(--ink-muted);
-        border-color: var(--rule-mid);
-      }
-
-      .btn-eng-ghost:hover { border-color: var(--accent); color: var(--accent); }
-
-      /* Right: photo in bracketed technical frame */
-      .hero-right {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 0.75rem;
-        position: relative;
-        align-self: center;
-      }
-
-      .hero-photo-frame {
-        position: relative;
-        width: 100%;
-      }
-
-      .hero-photo-frame img {
-        width: 100%;
-        aspect-ratio: 3/4;
-        object-fit: cover;
-        object-position: top center;
-        display: block;
-        filter: grayscale(15%) contrast(1.04);
-      }
-
-      /* Four corner brackets (2 via pseudoelements + 2 child spans) */
-      .hero-photo-frame::before,
-      .hero-photo-frame::after,
-      .hero-photo-frame .cbr-bl,
-      .hero-photo-frame .cbr-br {
-        position: absolute;
-        width: 20px; height: 20px;
-        border-color: var(--accent);
-        border-style: solid;
-        pointer-events: none;
-      }
-
-      .hero-photo-frame::before {
-        content: '';
-        top: -6px; left: -6px;
-        border-width: 2px 0 0 2px;
-      }
-
-      .hero-photo-frame::after {
-        content: '';
-        top: -6px; right: -6px;
-        border-width: 2px 2px 0 0;
-      }
-
-      .hero-photo-frame .cbr-bl {
-        content: '';
-        bottom: -6px; left: -6px;
-        border-width: 0 0 2px 2px;
-      }
-
-      .hero-photo-frame .cbr-br {
-        content: '';
-        bottom: -6px; right: -6px;
-        border-width: 0 2px 2px 0;
-      }
-
-      .hero-photo-caption {
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.12em;
-        color: var(--ink-muted);
-        text-align: right;
-        line-height: 1.6;
-      }
-
-      /* Scroll indicator */
-      .hero-scroll {
-        position: absolute;
-        bottom: 2rem;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.4rem;
-        font-family: var(--mono);
-        font-size: 8px;
-        letter-spacing: 0.2em;
-        color: var(--ink-muted);
-        text-transform: uppercase;
-      }
-
-      .hero-scroll-line {
-        width: 1px;
-        height: 32px;
-        background: linear-gradient(to bottom, var(--accent), transparent);
-        animation: scrollLine 2s ease-in-out infinite;
-      }
-
-      @keyframes scrollLine {
-        0%, 100% { opacity: 0.4; }
-        50% { opacity: 1; }
-      }
-
-      /* â”€â”€ SECTION HEADERS â”€â”€ */
-      .sec-eyebrow {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.2em;
-        color: var(--accent);
-        text-transform: uppercase;
-        margin-bottom: 0.75rem;
-      }
-
-      .sec-eyebrow-num {
-        opacity: 0.5;
-      }
-
-      .sec-eyebrow::before {
-        content: '';
-        width: 24px; height: 1px;
-        background: var(--accent);
-        opacity: 0.5;
-      }
-
-      .sec-title {
-        font-family: var(--serif);
-        font-weight: 600;
-        font-size: clamp(2rem, 4vw, 3.25rem);
-        line-height: 1.05;
-        color: var(--ink);
-        letter-spacing: -0.025em;
-        margin-bottom: 3.5rem;
-      }
-
-      /* â”€â”€ ABOUT â”€â”€ */
-      .about-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 5rem;
-        align-items: start;
-      }
-
-      .about-copy p {
-        font-size: 15px;
-        color: var(--ink-muted);
-        line-height: 1.85;
-        margin-bottom: 1.25rem;
-        font-weight: 300;
-      }
-
-      /* Spec block with corner brackets */
-      .about-spec {
-        position: relative;
-        padding: 2rem;
-        border: 1px solid var(--rule);
-      }
-
-      .about-spec::before {
-        content: '';
-        position: absolute;
-        top: -1px; left: -1px;
-        width: 14px; height: 14px;
-        border-top: 2px solid var(--accent);
-        border-left: 2px solid var(--accent);
-      }
-
-      .about-spec::after {
-        content: '';
-        position: absolute;
-        bottom: -1px; right: -1px;
-        width: 14px; height: 14px;
-        border-bottom: 2px solid var(--accent);
-        border-right: 2px solid var(--accent);
-      }
-
-      .about-spec-label {
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.18em;
-        color: var(--accent);
-        text-transform: uppercase;
-        margin-bottom: 1rem;
-      }
-
-      .about-spec p {
-        font-size: 14px;
-        color: var(--ink-muted);
-        line-height: 1.75;
-        margin-bottom: 1.25rem;
-        font-weight: 300;
-      }
-
-      .about-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-        margin-top: 1.25rem;
-        padding-top: 1.25rem;
-        border-top: 1px solid var(--rule);
-      }
-
-      .tag-eng {
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.1em;
-        padding: 0.3rem 0.7rem;
-        border: 1px solid var(--rule-mid);
-        color: var(--ink-muted);
-      }
-
-      /* â”€â”€ SKILLS MATRIX â”€â”€ */
-      .matrix-wrap {
-        border-top: 1px solid var(--rule-mid);
-      }
-
-      .matrix-header {
-        display: grid;
-        grid-template-columns: 2.5ch 1fr 1fr 7ch;
-        gap: 2rem;
-        padding: 0.65rem 1rem;
-        background: var(--ink-faint);
-        font-family: var(--mono);
-        font-size: 8px;
-        letter-spacing: 0.2em;
-        color: var(--ink-muted);
-        text-transform: uppercase;
-        border-bottom: 1px solid var(--rule-mid);
-      }
-
-      .matrix-row {
-        display: grid;
-        grid-template-columns: 2.5ch 1fr 1fr 7ch;
-        gap: 2rem;
-        padding: 1.3rem 1rem;
-        border-bottom: 1px solid var(--rule);
-        align-items: center;
-        transition: background 0.1s;
-      }
-
-      .matrix-row:hover { background: var(--accent-dim); }
-
-      .mrow-num {
-        font-family: var(--mono);
-        font-size: 10px;
-        color: var(--accent);
-        opacity: 0.5;
-      }
-
-      .mrow-domain {
-        font-size: 15px;
-        font-weight: 500;
-        color: var(--ink);
-      }
-
-      .mrow-tech {
-        font-family: var(--mono);
-        font-size: 10px;
-        color: var(--ink-muted);
-        letter-spacing: 0.04em;
-        line-height: 1.7;
-      }
-
-      .mrow-status {
-        font-family: var(--mono);
-        font-size: 8px;
-        letter-spacing: 0.18em;
-        color: var(--accent);
-        text-align: right;
-        text-transform: uppercase;
-      }
-
-      .tools-strip {
-        margin-top: 2.5rem;
-        padding: 1rem;
-        border: 1px solid var(--rule);
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        align-items: center;
-        position: relative;
-      }
-
-      .tools-strip-label {
-        font-family: var(--mono);
-        font-size: 8px;
-        letter-spacing: 0.2em;
-        color: var(--ink-muted);
-        text-transform: uppercase;
-        margin-right: 0.75rem;
-        flex-shrink: 0;
-      }
-
-      .tool-chip {
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.08em;
-        padding: 0.25rem 0.6rem;
-        border: 1px solid var(--rule);
-        color: var(--ink-muted);
-        transition: border-color 0.1s, color 0.1s;
-      }
-
-      .tool-chip:hover { border-color: var(--accent); color: var(--accent); }
-
-      /* â”€â”€ PROJECTS â”€â”€ */
-      .projects-list { display: flex; flex-direction: column; }
-
-      .project-entry {
-        display: grid;
-        grid-template-columns: 88px 1fr;
-        gap: 2.5rem;
-        padding: 3.5rem 0;
-        border-top: 1px solid var(--rule);
-        align-items: start;
-        transition: background 0.12s;
-      }
-
-      .project-entry:last-child { border-bottom: 1px solid var(--rule); }
-
-      /* Left column: number + motif */
-      .project-index {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.25rem;
-        padding-top: 0.25rem;
-      }
-
-      .project-num {
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.2em;
-        color: var(--accent);
-        opacity: 0.6;
-      }
-
-      /* Project motifs â€” SVG icons */
-      .project-motif {
-        width: 60px; height: 60px;
-        opacity: 0.75;
-        transition: opacity 0.12s;
-      }
-
-      .project-entry:hover .project-motif { opacity: 1; }
-
-      /* Right column: content */
-      .project-body { display: flex; flex-direction: column; gap: 0.85rem; }
-
-      .project-role {
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.18em;
-        color: var(--ink-muted);
-        text-transform: uppercase;
-      }
-
-      .project-title-link {
-        font-family: var(--serif);
-        font-size: clamp(1.6rem, 3vw, 2.4rem);
-        font-weight: 600;
-        color: var(--ink);
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-        cursor: pointer;
-        transition: color 0.12s;
-        display: inline-block;
-      }
-
-      .project-entry:hover .project-title-link { color: var(--accent-mid); }
-
-      .project-desc {
-        font-size: 14px;
-        color: var(--ink-muted);
-        max-width: 600px;
-        line-height: 1.8;
-        font-weight: 300;
-      }
-
-      .project-stack {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-      }
-
-      .tag {
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.08em;
-        padding: 0.25rem 0.6rem;
-        border: 1px solid var(--rule-mid);
-        color: var(--ink-muted);
-      }
-
-      .project-footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-top: 0.5rem;
-        border-top: 1px solid var(--rule);
-        margin-top: 0.25rem;
-      }
-
-      .project-date {
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.14em;
-        color: var(--ink-muted);
-      }
-
-      .project-open-btn {
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.14em;
-        color: var(--accent);
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: gap 0.12s;
-        background: none;
-        border: none;
-        padding: 0;
-      }
-
-      .project-open-btn:hover { gap: 0.85rem; }
-
-      /* â”€â”€ EDUCATION â”€â”€ */
-      .edu-entry {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 3rem;
-        align-items: start;
-        padding: 2.5rem;
-        border: 1px solid var(--rule);
-        position: relative;
-      }
-
-      .edu-entry::before {
-        content: '';
-        position: absolute;
-        top: -1px; left: -1px;
-        width: 16px; height: 16px;
-        border-top: 2px solid var(--accent);
-        border-left: 2px solid var(--accent);
-      }
-
-      .edu-entry::after {
-        content: '';
-        position: absolute;
-        bottom: -1px; right: -1px;
-        width: 16px; height: 16px;
-        border-bottom: 2px solid var(--accent);
-        border-right: 2px solid var(--accent);
-      }
-
-      .edu-school {
-        font-family: var(--serif);
-        font-size: 1.9rem;
-        font-weight: 600;
-        color: var(--ink);
-        line-height: 1.15;
-        margin-bottom: 0.6rem;
-      }
-
-      .edu-degree {
-        font-size: 14px;
-        color: var(--ink-muted);
-        font-weight: 300;
-        margin-bottom: 0.5rem;
-      }
-
-      .edu-loc {
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.14em;
-        color: var(--ink-muted);
-        text-transform: uppercase;
-      }
-
-      .edu-year-block { text-align: right; }
-
-      .edu-year-big {
-        font-family: var(--serif);
-        font-size: 4rem;
-        font-weight: 600;
-        color: var(--accent);
-        line-height: 1;
-      }
-
-      .edu-year-label {
-        font-family: var(--mono);
-        font-size: 8px;
-        letter-spacing: 0.2em;
-        color: var(--ink-muted);
-        text-transform: uppercase;
-        margin-top: 0.3rem;
-      }
-
-      /* â”€â”€ CONTACT â”€â”€ */
-      .contact-intro {
-        font-size: 15px;
-        color: var(--ink-muted);
-        font-weight: 300;
-        max-width: 460px;
-        line-height: 1.8;
-        margin-bottom: 2.5rem;
-      }
-
-      .contact-table { border-top: 1px solid var(--rule-mid); }
-
-      .contact-row {
-        display: grid;
-        grid-template-columns: 13ch 1fr auto;
-        align-items: center;
-        gap: 2rem;
-        padding: 1.05rem 0;
-        border-bottom: 1px solid var(--rule);
-        text-decoration: none;
-        color: inherit;
-        transition: background 0.1s, padding-left 0.1s;
-      }
-
-      .contact-row:hover { background: var(--accent-dim); padding-left: 0.5rem; }
-
-      .contact-key {
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.18em;
-        color: var(--ink-muted);
-        text-transform: uppercase;
-      }
-
-      .contact-val {
-        font-size: 14px;
-        color: var(--ink);
-      }
-
-      .contact-arr {
-        font-family: var(--mono);
-        font-size: 11px;
-        color: var(--accent);
-        opacity: 0;
-        transform: translateX(-4px);
-        transition: opacity 0.1s, transform 0.1s;
-      }
-
-      .contact-row:hover .contact-arr { opacity: 1; transform: translateX(0); }
-
-      /* â”€â”€ FOOTER â”€â”€ */
-      footer {
-        border-top: 1px solid var(--rule);
-        padding: 1.5rem 2.5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.14em;
-        color: var(--ink-muted);
-        position: relative;
-        z-index: 1;
-      }
-
-      /* â”€â”€ REVEAL â€” SNAP, NOT BOUNCE â”€â”€ */
-      .reveal {
-        opacity: 0;
-        transform: translateY(10px);
-        transition: opacity 0.18s ease, transform 0.18s ease;
-      }
-
-      .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* â”€â”€ MODALS â”€â”€ */
-      .modal-overlay {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(14,13,11,0.92);
-        z-index: 1000;
-        overflow-y: auto;
-        padding: 2rem;
-      }
-
-      .modal-overlay.open {
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-      }
-
-      .modal {
-        background: var(--bg-raised);
-        border: 1px solid var(--rule-mid);
-        padding: 2.5rem;
-        max-width: 760px;
-        width: 100%;
-        margin: 2rem auto;
-        position: relative;
-      }
-
-      .modal::before {
-        content: '';
-        position: absolute;
-        top: -1px; left: -1px;
-        width: 16px; height: 16px;
-        border-top: 2px solid var(--accent);
-        border-left: 2px solid var(--accent);
-        pointer-events: none;
-      }
-
-      .modal::after {
-        content: '';
-        position: absolute;
-        bottom: -1px; right: -1px;
-        width: 16px; height: 16px;
-        border-bottom: 2px solid var(--accent);
-        border-right: 2px solid var(--accent);
-        pointer-events: none;
-      }
-
-      .modal-close {
-        position: absolute;
-        top: 1.25rem; right: 1.25rem;
-        font-family: var(--mono);
-        font-size: 11px;
-        background: none;
-        border: 1px solid var(--rule-mid);
-        color: var(--ink-muted);
-        width: 30px; height: 30px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: border-color 0.1s, color 0.1s;
-      }
-
-      .modal-close:hover { border-color: var(--accent); color: var(--accent); }
-
-      .modal-label {
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.18em;
-        color: var(--accent);
-        margin-bottom: 0.75rem;
-        text-transform: uppercase;
-      }
-
-      .modal-title {
-        font-family: var(--serif);
-        font-size: 2rem;
-        font-weight: 600;
-        color: var(--ink);
-        margin-bottom: 1rem;
-        letter-spacing: -0.02em;
-        line-height: 1.1;
-      }
-
-      .modal-desc {
-        font-size: 14px;
-        color: var(--ink-muted);
-        line-height: 1.8;
-        margin-bottom: 1.5rem;
-        font-weight: 300;
-      }
-
-      .project-links {
-        display: flex;
-        gap: 0.75rem;
-        flex-wrap: wrap;
-        margin-bottom: 1.5rem;
-      }
-
-      .project-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-family: var(--mono);
-        font-size: 9px;
-        letter-spacing: 0.14em;
-        color: var(--accent);
-        text-decoration: none;
-        border: 1px solid var(--rule-mid);
-        padding: 0.5rem 1rem;
-        transition: border-color 0.1s, background 0.1s;
-        text-transform: uppercase;
-      }
-
-      .project-link:hover { border-color: var(--accent); background: var(--accent-dim); }
-      .project-link svg { width: 13px; height: 13px; }
-
-      .modal-stack-title {
-        font-family: var(--mono);
-        font-size: 8px;
-        letter-spacing: 0.2em;
-        color: var(--ink-muted);
-        text-transform: uppercase;
-        margin-top: 1.75rem;
-        margin-bottom: 0.75rem;
-        border-bottom: 1px solid var(--rule);
-        padding-bottom: 0.5rem;
-      }
-
-      .modal-built-list {
-        margin: 0.5rem 0 0 1.1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
-      }
-
-      .modal-built-list li {
-        font-size: 13px;
-        color: var(--ink-muted);
-        line-height: 1.65;
-        font-weight: 300;
-      }
-
-      .modal-screenshots {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        margin-top: 0.5rem;
-      }
-
-      #baometer-modal .modal-screenshots {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      #baometer-modal .modal-screenshot { aspect-ratio: 4/3; }
-
-      .modal-screenshot {
-        aspect-ratio: 16/10;
-        overflow: hidden;
-        cursor: zoom-in;
-        border: 1px solid var(--rule);
-        transition: border-color 0.12s;
-      }
-
-      .modal-screenshot:hover { border-color: var(--accent); }
-
-      .modal-screenshot img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.2s ease;
-      }
-
-      .modal-screenshot:hover img { transform: scale(1.04); }
-
-      .modal-screenshot-label {
-        font-family: var(--mono);
-        font-size: 8px;
-        letter-spacing: 0.14em;
-        color: var(--accent);
-        margin-top: 0.5rem;
-        text-transform: uppercase;
-      }
-
-      .modal-screenshot-desc {
-        font-size: 11px;
-        color: var(--ink-muted);
-        margin-top: 0.25rem;
-        line-height: 1.6;
-        font-weight: 300;
-      }
-
-      /* â”€â”€ LIGHTBOX â”€â”€ */
-      .lightbox {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(14,13,11,0.97);
-        z-index: 1100;
-        align-items: center;
-        justify-content: center;
-        cursor: zoom-out;
-      }
-
-      .lightbox.open { display: flex; }
-
-      .lightbox-close {
-        position: fixed;
-        top: 1.5rem; right: 1.5rem;
-        font-family: var(--mono);
-        font-size: 11px;
-        background: none;
-        border: 1px solid var(--rule-mid);
-        color: var(--ink-muted);
-        width: 34px; height: 34px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10;
-        transition: border-color 0.1s, color 0.1s;
-      }
-
-      .lightbox-close:hover { border-color: var(--accent); color: var(--accent); }
-
-      #lightbox-img {
-        max-width: 92vw;
-        max-height: 88vh;
-        object-fit: contain;
-        display: block;
-      }
-
-      /* â”€â”€ RESPONSIVE â”€â”€ */
-      @media (max-width: 900px) {
-        .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
-        .hero-right { display: none; }
-        .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-        .matrix-header,
-        .matrix-row { grid-template-columns: 2.5ch 1fr 1fr; }
-        .mrow-status { display: none; }
-      }
-
-      @media (max-width: 720px) {
-        nav { padding: 1rem 1.5rem; }
-        .nav-toggle { display: flex; }
-        .nav-links {
-          display: none;
-          position: fixed;
-          top: 57px; left: 0; right: 0;
-          background: rgba(14,13,11,0.98);
-          flex-direction: column;
-          gap: 0;
-          border-bottom: 1px solid var(--rule);
-          backdrop-filter: blur(12px);
+﻿<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="description" content="Mark Hubert Boctulan is a Computer Engineering student building accessible web apps, AI tools, and embedded systems for real-world use."/>
+<meta property="og:title" content="Mark Hubert Boctulan | Portfolio"/>
+<meta property="og:description" content="Computer Engineering student building accessible web apps, AI tools, and embedded systems for real-world use."/>
+<meta property="og:image" content="assets/Profile.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Mark Hubert Boctulan | Portfolio"/>
+<meta name="twitter:description" content="Computer Engineering student building accessible web apps, AI tools, and embedded systems for real-world use."/>
+<meta name="twitter:image" content="assets/Profile.png"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230e0d0b'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Georgia,serif' font-size='20' fill='%23c9a84c'%3EMHB%3C/text%3E%3C/svg%3E"/>
+<title>MHB | REV. 2026 — Mark Hubert Boctulan Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "background": "#0e0d0b",
+          "primary-fixed": "#ffe08f",
+          "secondary-fixed": "#e2e2e2",
+          "on-tertiary-fixed": "#1a1c1c",
+          "on-surface-variant": "#d0c5b2",
+          "on-tertiary": "#2f3131",
+          "on-surface": "#e6e2de",
+          "secondary": "#c6c6c7",
+          "surface": "#0e0d0b",
+          "on-tertiary-container": "#3f4040",
+          "surface-variant": "#363432",
+          "on-secondary-fixed-variant": "#454747",
+          "on-error": "#690005",
+          "primary-container": "#c9a84c",
+          "on-primary-fixed-variant": "#584400",
+          "tertiary-container": "#ababab",
+          "on-tertiary-fixed-variant": "#464747",
+          "inverse-on-surface": "#32302e",
+          "inverse-surface": "#e6e2de",
+          "surface-container-low": "#1d1b19",
+          "surface-container-high": "#2b2a27",
+          "secondary-container": "#454747",
+          "on-primary": "#3d2e00",
+          "on-background": "#e6e2de",
+          "tertiary-fixed": "#e3e2e2",
+          "surface-container-highest": "#363432",
+          "outline-variant": "#4d4637",
+          "on-secondary": "#2f3131",
+          "inverse-primary": "#755b00",
+          "on-error-container": "#ffdad6",
+          "surface-bright": "#3b3936",
+          "primary-fixed-dim": "#e6c364",
+          "error": "#ffb4ab",
+          "secondary-fixed-dim": "#c6c6c7",
+          "surface-dim": "#0e0d0b",
+          "on-secondary-container": "#b4b5b5",
+          "on-primary-container": "#503d00",
+          "surface-tint": "#e6c364",
+          "primary": "#c9a84c",
+          "surface-container": "#211f1d",
+          "on-secondary-fixed": "#1a1c1c",
+          "on-primary-fixed": "#241a00",
+          "outline": "#99907e",
+          "tertiary": "#c7c6c6",
+          "tertiary-fixed-dim": "#c7c6c6",
+          "error-container": "#93000a",
+          "surface-container-lowest": "#0f0e0c"
+        },
+        borderRadius: {
+          "DEFAULT": "0px",
+          "lg": "0px",
+          "xl": "0px",
+          "full": "9999px"
+        },
+        spacing: {
+          "margin-mobile": "20px",
+          "container-max": "1440px",
+          "margin-desktop": "80px",
+          "unit": "8px",
+          "gutter": "24px"
+        },
+        fontFamily: {
+          "headline": ["Libre Caslon Text", "serif"],
+          "body": ["Inter", "sans-serif"],
+          "mono": ["JetBrains Mono", "monospace"]
         }
-        .nav-links.open { display: flex; }
-        .nav-links li a {
-          display: block;
-          padding: 0.9rem 1.5rem;
-          border-bottom: 1px solid var(--rule);
-        }
-        .container { padding: 0 1.25rem; }
-        section { padding: 4rem 0; }
-        .project-entry { grid-template-columns: 1fr; gap: 1.5rem; }
-        .project-index { flex-direction: row; align-items: center; gap: 1rem; }
-        .project-motif { width: 44px; height: 44px; }
-        .contact-row { grid-template-columns: 10ch 1fr; }
-        .contact-arr { display: none; }
-        .matrix-header,
-        .matrix-row { grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .mrow-num { display: none; }
-        .modal-screenshots { grid-template-columns: 1fr 1fr; }
       }
+    }
+  }
+</script>
+<style>
+  body {
+    background-color: #0e0d0b;
+    color: #e6e2de;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+  }
 
-      @media (max-width: 500px) {
-        .hero-name-first, .hero-name-last { font-size: 3rem; }
-        .hero-spec-row { flex-direction: column; }
-        .hero-spec-item { border-right: none; border-bottom: 1px solid var(--rule); padding: 0.65rem 0; }
-        .hero-spec-item:last-child { border-bottom: none; }
-        .matrix-header,
-        .matrix-row { grid-template-columns: 1fr; }
-        .matrix-header { display: none; }
-        .edu-entry { grid-template-columns: 1fr; gap: 1.5rem; }
-        .edu-year-block { text-align: left; }
-        .modal { padding: 1.5rem; }
-        .modal-screenshots { grid-template-columns: 1fr; }
-        #baometer-modal .modal-screenshots { grid-template-columns: 1fr; }
-        .contact-row { grid-template-columns: 1fr; }
-        .contact-key { display: none; }
-        footer { flex-direction: column; gap: 0.4rem; text-align: center; }
-      }
+  .corner-bracket { position: relative; }
+  .corner-bracket::before, .corner-bracket::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #c9a84c;
+  }
+  .bracket-tl::before { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
+  .bracket-tr::after  { top: -2px; right: -2px; border-left: 0; border-bottom: 0; }
+  .bracket-bl::before { bottom: -2px; left: -2px; border-right: 0; border-top: 0; }
+  .bracket-br::after  { bottom: -2px; right: -2px; border-left: 0; border-top: 0; }
 
-      @media (max-width: 360px) {
-        .hero-name-first, .hero-name-last { font-size: 2.4rem; }
-      }
-    </style>
-  </head>
-  <body>
-    <nav>
-      <div class="nav-logo">
-        MHB
-        <span class="nav-logo-sep"></span>
-        <span class="nav-logo-meta">REV. 2026</span>
-      </div>
-      <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
-        <span class="nav-toggle-lines" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </span>
+  .blur-orb {
+    position: fixed;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, rgba(201,168,76,0) 70%);
+    filter: blur(80px);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+
+  .tech-chip::before { content: '['; margin-right: 4px; color: #4d4637; }
+  .tech-chip::after  { content: ']'; margin-left: 4px;  color: #4d4637; }
+
+  .scroll-indicator { animation: bounce 2s infinite; }
+  @keyframes bounce {
+    0%,20%,50%,80%,100% { transform: translateY(0); }
+    40% { transform: translateY(-5px); }
+    60% { transform: translateY(-3px); }
+  }
+
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    font-size: 1.25rem;
+  }
+
+  /* ── EXISTING MODAL SYSTEM ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(14,13,11,0.92);
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 2rem 1rem;
+  }
+  .modal-overlay.open {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .modal {
+    background: #1a1917;
+    border: 1px solid rgba(255,255,255,0.14);
+    padding: 2.5rem;
+    max-width: 760px;
+    width: 100%;
+    margin: 2rem auto;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+  }
+  .modal::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px;
+    width: 16px; height: 16px;
+    border-top: 2px solid #c9a84c;
+    border-left: 2px solid #c9a84c;
+    pointer-events: none;
+  }
+  .modal::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; right: -1px;
+    width: 16px; height: 16px;
+    border-bottom: 2px solid #c9a84c;
+    border-right: 2px solid #c9a84c;
+    pointer-events: none;
+  }
+  .modal-close {
+    position: absolute;
+    top: 1.25rem; right: 1.25rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: none;
+    border: 1px solid rgba(255,255,255,0.14);
+    color: #9a9080;
+    width: 30px; height: 30px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.1s, color 0.1s;
+  }
+  .modal-close:hover { border-color: #c9a84c; color: #c9a84c; }
+  .modal-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: #c9a84c;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
+  .modal-title {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #e6e2de;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  .modal-desc {
+    font-size: 14px;
+    color: #d0c5b2;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+  .project-links {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: #c9a84c;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.14);
+    padding: 0.5rem 1rem;
+    transition: border-color 0.1s, background 0.1s;
+    text-transform: uppercase;
+  }
+  .project-link:hover { border-color: #c9a84c; background: rgba(201,168,76,0.07); }
+  .project-link svg { width: 13px; height: 13px; }
+  .modal-stack-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    color: #9a9080;
+    text-transform: uppercase;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 0.5rem;
+  }
+  .modal-built-list {
+    margin: 0.5rem 0 0 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .modal-built-list li { font-size: 13px; color: #d0c5b2; line-height: 1.65; font-weight: 300; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.6rem;
+    border: 1px solid rgba(255,255,255,0.14);
+    color: #9a9080;
+  }
+  .modal-screenshots {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  #baometer-modal .modal-screenshots { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  #baometer-modal .modal-screenshot  { aspect-ratio: 4/3; }
+  .modal-screenshot {
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    cursor: zoom-in;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: border-color 0.12s;
+  }
+  .modal-screenshot:hover { border-color: #c9a84c; }
+  .modal-screenshot img { width:100%; height:100%; object-fit:cover; transition: transform 0.2s ease; }
+  .modal-screenshot:hover img { transform: scale(1.04); }
+  .modal-screenshot-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    color: #c9a84c;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+  }
+  .modal-screenshot-desc { font-size: 11px; color: #9a9080; margin-top: 0.25rem; line-height: 1.6; font-weight: 300; }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(14,13,11,0.97);
+    z-index: 1100;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox-close {
+    position: fixed;
+    top: 1.5rem; right: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: none;
+    border: 1px solid rgba(255,255,255,0.14);
+    color: #9a9080;
+    width: 34px; height: 34px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 10;
+  }
+  .lightbox-close:hover { border-color: #c9a84c; color: #c9a84c; }
+  #lightbox-img { max-width: 92vw; max-height: 88vh; object-fit: contain; display: block; }
+
+  @media (max-width: 640px) {
+    .modal { padding: 1.5rem; }
+    .modal-screenshots { grid-template-columns: 1fr 1fr; }
+    #baometer-modal .modal-screenshots { grid-template-columns: 1fr 1fr; }
+    .project-links { flex-direction: column; }
+  }
+  @media (max-width: 400px) {
+    .modal-screenshots { grid-template-columns: 1fr; }
+    #baometer-modal .modal-screenshots { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body class="selection:bg-primary/30 selection:text-primary">
+
+<!-- Atmospheric Background -->
+<div class="blur-orb" style="top:-10%;left:-5%;"></div>
+<div class="blur-orb" style="top:40%;right:-10%;"></div>
+<div class="blur-orb" style="bottom:-10%;left:20%;"></div>
+
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/10">
+  <nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full max-w-container-max mx-auto">
+    <div class="font-mono text-[10px] tracking-widest text-primary font-medium">MHB | REV. 2026</div>
+    <div class="hidden md:flex gap-8">
+      <a class="font-mono text-[11px] tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors" href="#about">About</a>
+      <a class="font-mono text-[11px] tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors" href="#skills">Skills</a>
+      <a class="font-mono text-[11px] tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors" href="#projects">Projects</a>
+      <a class="font-mono text-[11px] tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors" href="#education">Education</a>
+      <a class="font-mono text-[11px] tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors" href="#contact">Contact</a>
+    </div>
+    <button class="md:hidden text-primary" onclick="toggleDrawer()">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </nav>
+</header>
+
+<!-- Mobile Navigation Drawer -->
+<div class="fixed inset-0 z-[60] translate-x-full transition-transform duration-300" id="nav-drawer">
+  <div class="absolute inset-0 bg-background/60 backdrop-blur-md" onclick="toggleDrawer()"></div>
+  <div class="absolute right-0 top-0 h-full w-64 bg-surface-container-highest shadow-2xl p-8 flex flex-col">
+    <div class="flex justify-between items-center mb-12">
+      <span class="font-mono text-[10px] text-primary">SPECIFICATIONS</span>
+      <button class="text-on-surface-variant" onclick="toggleDrawer()">
+        <span class="material-symbols-outlined">close</span>
       </button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    </div>
+    <div class="flex flex-col gap-6">
+      <a class="flex items-center gap-4 text-on-surface-variant hover:text-primary transition-colors" href="#about" onclick="toggleDrawer()">
+        <span class="material-symbols-outlined">person</span>
+        <span class="font-mono text-sm">About</span>
+      </a>
+      <a class="flex items-center gap-4 text-on-surface-variant hover:text-primary transition-colors" href="#skills" onclick="toggleDrawer()">
+        <span class="material-symbols-outlined">bolt</span>
+        <span class="font-mono text-sm">Skills</span>
+      </a>
+      <a class="flex items-center gap-4 text-on-surface-variant hover:text-primary transition-colors" href="#projects" onclick="toggleDrawer()">
+        <span class="material-symbols-outlined">architecture</span>
+        <span class="font-mono text-sm">Projects</span>
+      </a>
+      <a class="flex items-center gap-4 text-on-surface-variant hover:text-primary transition-colors" href="#education" onclick="toggleDrawer()">
+        <span class="material-symbols-outlined">school</span>
+        <span class="font-mono text-sm">Education</span>
+      </a>
+      <a class="flex items-center gap-4 text-on-surface-variant hover:text-primary transition-colors" href="#contact" onclick="toggleDrawer()">
+        <span class="material-symbols-outlined">mail</span>
+        <span class="font-mono text-sm">Contact</span>
+      </a>
+    </div>
+    <div class="mt-auto pt-8 border-t border-outline-variant/20">
+      <p class="font-mono text-[9px] text-outline opacity-50 uppercase tracking-tighter">Bohol Island State University<br/>Computer Engineering</p>
+    </div>
+  </div>
+</div>
 
-    <main>
-      <!-- â”€â”€ HERO â€” ENGINEERING TITLE BLOCK â”€â”€ -->
-      <section class="hero" id="intro">
-        <div class="container hero-inner">
-          <div class="hero-left">
-            <div class="hero-meta-bar">
-              <span class="meta-bullet" aria-hidden="true"></span>
-              <span>CpE Â· BISU Â· Tagbilaran</span>
-              <span class="meta-bullet" aria-hidden="true"></span>
-              <span>Sheet 01 of 01</span>
-              <span class="meta-bullet" aria-hidden="true"></span>
-              <span>Status: 3rd Year</span>
-            </div>
+<main class="pt-16 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
 
-            <h1 class="hero-name">
-              <span class="hero-name-first">Mark Hubert</span>
-              <span class="hero-name-last">Boctulan</span>
-              <span class="hero-name-role">Software Â· Embedded Â· AI</span>
-            </h1>
+  <!-- ── HERO ── -->
+  <section class="min-h-[795px] flex flex-col justify-center py-20 relative">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
 
-            <div class="hero-spec-row">
-              <div class="hero-spec-item">
-                <span class="spec-label">Function</span>
-                <span class="spec-val">Systems Builder</span>
-              </div>
-              <div class="hero-spec-item">
-                <span class="spec-label">Domain</span>
-                <span class="spec-val">Web Â· Mobile Â· Embedded</span>
-              </div>
-              <div class="hero-spec-item">
-                <span class="spec-label">Expected Grad.</span>
-                <span class="spec-val">2027</span>
-              </div>
-            </div>
-
-            <p class="hero-desc">
-              Computer Engineering student building embedded systems, AI-assisted applications, and community-focused technology that stays useful under real-world pressure.
-            </p>
-
-            <div class="hero-cta">
-              <a href="#projects" class="btn-eng btn-eng-solid">View Work</a>
-              <a href="#contact" class="btn-eng btn-eng-ghost">Get in Touch</a>
-            </div>
-          </div>
-
-          <div class="hero-right">
-            <div class="hero-photo-frame">
-              <span class="cbr-bl" aria-hidden="true"></span>
-              <span class="cbr-br" aria-hidden="true"></span>
-              <img src="assets/Profile.png" alt="Mark Hubert Boctulan" />
-            </div>
-            <div class="hero-photo-caption">
-              Mark Hubert Boctulan<br />Software Developer
-            </div>
-          </div>
+      <!-- Left: Title block -->
+      <div class="md:col-span-8 flex flex-col gap-8 reveal">
+        <div class="flex items-center gap-4 py-2 px-4 bg-surface-container-low border border-outline-variant/20 w-fit">
+          <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+          <span class="font-mono text-[11px] tracking-wider text-on-surface-variant uppercase">
+            CPE · BISU · Tagbilaran &nbsp;•&nbsp; Sheet 01 of 01 &nbsp;•&nbsp; Status: 3rd Year
+          </span>
         </div>
 
-        <div class="hero-scroll" aria-hidden="true">
-          <div class="hero-scroll-line"></div>
-        </div>
-      </section>
+        <h1 class="font-headline text-5xl md:text-7xl lg:text-8xl leading-[1.1] text-on-surface max-w-4xl">
+          I Build Systems That <span class="italic text-primary">Survive Contact</span> With Reality
+        </h1>
 
-      <hr class="hr-eng" />
-
-      <!-- â”€â”€ ABOUT â”€â”€ -->
-      <section id="about">
-        <div class="container">
-          <div class="sec-eyebrow"><span class="sec-eyebrow-num">00</span> About</div>
-          <h2 class="sec-title">Building with purpose</h2>
-
-          <div class="about-grid reveal">
-            <div class="about-copy">
-              <p>I'm a Computer Engineering student who likes turning ideas into tools people can actually use. My work sits at the intersection of software, hardware, and interface design, with a strong focus on clarity, reliability, and usefulness in real situations.</p>
-              <p>I built projects like disaster-response PWAs, AI-powered classification tools, and embedded systems because I want to grow into an engineer who can solve practical problems for communities and organizations, not just ship polished demos.</p>
-            </div>
-
-            <div class="about-spec">
-              <div class="about-spec-label">Design Constraints</div>
-              <p>I care about systems that stay helpful under pressure, work well on modest devices, and make complicated tasks feel simpler for the people who depend on them.</p>
-              <div class="about-tags">
-                <span class="tag-eng">Community-focused</span>
-                <span class="tag-eng">Hardware + software</span>
-                <span class="tag-eng">Accessibility-minded</span>
-                <span class="tag-eng">Low-connectivity ready</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <hr class="hr-eng" />
-
-      <!-- â”€â”€ SKILLS â€” CAPABILITIES MATRIX â”€â”€ -->
-      <section id="skills">
-        <div class="container">
-          <div class="sec-eyebrow"><span class="sec-eyebrow-num">01</span> Capabilities</div>
-          <h2 class="sec-title">Technical Skills</h2>
-
-          <div class="matrix-wrap reveal">
-            <div class="matrix-header" aria-hidden="true">
-              <span>#</span>
-              <span>Domain</span>
-              <span>Technologies</span>
-              <span>Status</span>
-            </div>
-
-            <div class="matrix-row">
-              <span class="mrow-num">01</span>
-              <span class="mrow-domain">Web &amp; PWA</span>
-              <span class="mrow-tech">JavaScript Â· Firebase Â· Firestore<br>FCM Â· Leaflet Â· HTML/CSS</span>
-              <span class="mrow-status">Active</span>
-            </div>
-            <div class="matrix-row">
-              <span class="mrow-num">02</span>
-              <span class="mrow-domain">Mobile</span>
-              <span class="mrow-tech">Flutter Â· Dart<br>Android Studio</span>
-              <span class="mrow-status">Active</span>
-            </div>
-            <div class="matrix-row">
-              <span class="mrow-num">03</span>
-              <span class="mrow-domain">AI / Vision</span>
-              <span class="mrow-tech">Python Â· CNN Â· TensorFlow Lite<br>Google Colab</span>
-              <span class="mrow-status">Active</span>
-            </div>
-            <div class="matrix-row">
-              <span class="mrow-num">04</span>
-              <span class="mrow-domain">Embedded Systems</span>
-              <span class="mrow-tech">C++ Â· Arduino Â· ESP32<br>ISR Â· State Machines</span>
-              <span class="mrow-status">Active</span>
-            </div>
-          </div>
-
-          <div class="tools-strip reveal">
-            <span class="tools-strip-label">Tools</span>
-            <span class="tool-chip">VS Code</span>
-            <span class="tool-chip">Android Studio</span>
-            <span class="tool-chip">Google Colab</span>
-            <span class="tool-chip">Firebase</span>
-            <span class="tool-chip">Supabase</span>
-            <span class="tool-chip">Flutter SDK</span>
-            <span class="tool-chip">Arduino IDE</span>
-            <span class="tool-chip">Git &amp; GitHub</span>
-          </div>
-        </div>
-      </section>
-
-      <hr class="hr-eng" />
-
-      <!-- â”€â”€ PROJECTS â”€â”€ -->
-      <section id="projects">
-        <div class="container">
-          <div class="sec-eyebrow"><span class="sec-eyebrow-num">02</span> Selected Work</div>
-          <h2 class="sec-title">Featured Projects</h2>
-
-          <div class="projects-list">
-
-            <!-- 01 â€” Resilink: network/mapping motif -->
-            <div class="project-entry reveal">
-              <div class="project-index">
-                <div class="project-num">01</div>
-                <svg class="project-motif" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <circle cx="30" cy="10" r="3.5" fill="#c9a84c" opacity="0.9"/>
-                  <circle cx="10" cy="30" r="2.5" fill="#c9a84c" opacity="0.6"/>
-                  <circle cx="50" cy="30" r="2.5" fill="#c9a84c" opacity="0.6"/>
-                  <circle cx="18" cy="50" r="2" fill="#c9a84c" opacity="0.45"/>
-                  <circle cx="42" cy="50" r="2" fill="#c9a84c" opacity="0.45"/>
-                  <circle cx="30" cy="38" r="2" fill="#c9a84c" opacity="0.5"/>
-                  <line x1="30" y1="10" x2="10" y2="30" stroke="#c9a84c" stroke-width="0.75" opacity="0.4"/>
-                  <line x1="30" y1="10" x2="50" y2="30" stroke="#c9a84c" stroke-width="0.75" opacity="0.4"/>
-                  <line x1="10" y1="30" x2="18" y2="50" stroke="#c9a84c" stroke-width="0.75" opacity="0.3"/>
-                  <line x1="50" y1="30" x2="42" y2="50" stroke="#c9a84c" stroke-width="0.75" opacity="0.3"/>
-                  <line x1="10" y1="30" x2="30" y2="38" stroke="#c9a84c" stroke-width="0.5" opacity="0.3" stroke-dasharray="2 3"/>
-                  <line x1="50" y1="30" x2="30" y2="38" stroke="#c9a84c" stroke-width="0.5" opacity="0.3" stroke-dasharray="2 3"/>
-                  <line x1="10" y1="30" x2="50" y2="30" stroke="#c9a84c" stroke-width="0.4" opacity="0.2" stroke-dasharray="3 4"/>
-                </svg>
-              </div>
-              <div class="project-body">
-                <div class="project-role">Lead Web Developer</div>
-                <h3>
-                  <span class="project-title-link" onclick="openDialog('resilink-modal', this)" tabindex="0" role="button" aria-haspopup="dialog">
-                    Resilink â€” Disaster Response PWA
-                  </span>
-                </h3>
-                <p class="project-desc">
-                  Progressive Web App for LGU disaster response coordination in Bohol. Real-time Firestore sync, FCM push notifications, full offline support, Leaflet-based live map, and admin moderation â€” built for low-connectivity emergency situations.
-                </p>
-                <div class="project-stack">
-                  <span class="tag">JavaScript</span>
-                  <span class="tag">Firebase</span>
-                  <span class="tag">Firestore</span>
-                  <span class="tag">FCM</span>
-                  <span class="tag">PWA</span>
-                  <span class="tag">Leaflet</span>
-                </div>
-                <div class="project-footer">
-                  <span class="project-date">Jan â€“ Apr 2026</span>
-                  <button class="project-open-btn" onclick="openDialog('resilink-modal', this)" aria-haspopup="dialog">
-                    Open details â†’
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- 02 â€” TimberScan: scan-line / classification motif -->
-            <div class="project-entry reveal">
-              <div class="project-index">
-                <div class="project-num">02</div>
-                <svg class="project-motif" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <!-- Horizontal scan lines -->
-                  <line x1="6" y1="12" x2="54" y2="12" stroke="#c9a84c" stroke-width="0.5" opacity="0.25"/>
-                  <line x1="6" y1="20" x2="54" y2="20" stroke="#c9a84c" stroke-width="0.5" opacity="0.3"/>
-                  <line x1="6" y1="28" x2="54" y2="28" stroke="#c9a84c" stroke-width="2" opacity="0.9"/>
-                  <line x1="6" y1="36" x2="54" y2="36" stroke="#c9a84c" stroke-width="0.5" opacity="0.3"/>
-                  <line x1="6" y1="44" x2="54" y2="44" stroke="#c9a84c" stroke-width="0.5" opacity="0.2"/>
-                  <!-- Outer classification bar -->
-                  <rect x="6" y="50" width="48" height="3" fill="none" stroke="#c9a84c" stroke-width="0.5" opacity="0.3"/>
-                  <!-- Filled confidence bar -->
-                  <rect x="6" y="50" width="36" height="3" fill="#c9a84c" opacity="0.7"/>
-                  <!-- Corner marks on scan area -->
-                  <path d="M6 6 L6 12 M6 6 L12 6" stroke="#c9a84c" stroke-width="1" opacity="0.5"/>
-                  <path d="M54 6 L54 12 M54 6 L48 6" stroke="#c9a84c" stroke-width="1" opacity="0.5"/>
-                </svg>
-              </div>
-              <div class="project-body">
-                <div class="project-role">Lead Developer</div>
-                <h3>
-                  <span class="project-title-link" onclick="openDialog('timberscan-modal', this)" tabindex="0" role="button" aria-haspopup="dialog">
-                    TimberScan â€” Lumber Identification App
-                  </span>
-                </h3>
-                <p class="project-desc">
-                  Flutter mobile application that classifies lumber types from live camera images using a trained Convolutional Neural Network. Model trained in Google Colab, converted to TensorFlow Lite, and deployed on-device for real-time inference without internet dependency.
-                </p>
-                <div class="project-stack">
-                  <span class="tag">Flutter</span>
-                  <span class="tag">Dart</span>
-                  <span class="tag">Python</span>
-                  <span class="tag">CNN</span>
-                  <span class="tag">TFLite</span>
-                  <span class="tag">Google Colab</span>
-                </div>
-                <div class="project-footer">
-                  <span class="project-date">Jan â€“ Apr 2026</span>
-                  <button class="project-open-btn" onclick="openDialog('timberscan-modal', this)" aria-haspopup="dialog">
-                    Open details â†’
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- 03 â€” BaoMeter: circuit / sensor-pulse motif -->
-            <div class="project-entry reveal">
-              <div class="project-index">
-                <div class="project-num">03</div>
-                <svg class="project-motif" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <!-- ISR waveform / square pulse -->
-                  <polyline
-                    points="4,42 14,42 14,22 22,22 22,42 32,42 32,22 40,22 40,42 56,42"
-                    stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.85"
-                  />
-                  <!-- Ground reference line -->
-                  <line x1="4" y1="50" x2="56" y2="50" stroke="#c9a84c" stroke-width="0.5" opacity="0.25"/>
-                  <!-- VCC reference line -->
-                  <line x1="4" y1="14" x2="56" y2="14" stroke="#c9a84c" stroke-width="0.4" opacity="0.18"/>
-                  <!-- Measurement tick marks -->
-                  <line x1="14" y1="48" x2="14" y2="52" stroke="#c9a84c" stroke-width="0.75" opacity="0.4"/>
-                  <line x1="32" y1="48" x2="32" y2="52" stroke="#c9a84c" stroke-width="0.75" opacity="0.4"/>
-                  <!-- Probe point marker -->
-                  <circle cx="40" cy="22" r="2" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.6"/>
-                </svg>
-              </div>
-              <div class="project-body">
-                <div class="project-role">Systems Integrator</div>
-                <h3>
-                  <span class="project-title-link" onclick="openDialog('baometer-modal', this)" tabindex="0" role="button" aria-haspopup="dialog">
-                    BaoMeter â€” Electronic Fare System
-                  </span>
-                </h3>
-                <p class="project-desc">
-                  Hall sensor-based fare system for BaoBao vehicles. Implements ISR debouncing for reliable sensor input and a READY â†’ COUNTING â†’ STOPPED state machine for accurate passenger counting and automated fare computation.
-                </p>
-                <div class="project-stack">
-                  <span class="tag">C++</span>
-                  <span class="tag">Arduino</span>
-                  <span class="tag">Hall Sensor</span>
-                  <span class="tag">ISR</span>
-                  <span class="tag">State Machine</span>
-                </div>
-                <div class="project-footer">
-                  <span class="project-date">Jan â€“ Apr 2026</span>
-                  <button class="project-open-btn" onclick="openDialog('baometer-modal', this)" aria-haspopup="dialog">
-                    Open details â†’
-                  </button>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <hr class="hr-eng" />
-
-      <!-- â”€â”€ EDUCATION â”€â”€ -->
-      <section id="education">
-        <div class="container">
-          <div class="sec-eyebrow"><span class="sec-eyebrow-num">03</span> Background</div>
-          <h2 class="sec-title">Education</h2>
-
-          <div class="edu-entry reveal">
-            <div>
-              <div class="edu-school">Bohol Island State<br />University</div>
-              <div class="edu-degree">Bachelor of Science in Computer Engineering</div>
-              <div class="edu-loc">Tagbilaran City, Bohol Â· Currently 3rd Year</div>
-            </div>
-            <div class="edu-year-block">
-              <div class="edu-year-big">2027</div>
-              <div class="edu-year-label">Expected Grad.</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <hr class="hr-eng" />
-
-      <!-- â”€â”€ CONTACT â”€â”€ -->
-      <section id="contact">
-        <div class="container">
-          <div class="sec-eyebrow"><span class="sec-eyebrow-num">04</span> Get in Touch</div>
-          <h2 class="sec-title">Let's Connect</h2>
-
-          <p class="contact-intro">
-            Always up for interesting projects and meaningful work. Let's build something together.
+        <div class="flex flex-col gap-6">
+          <div class="font-mono text-primary tracking-widest text-sm uppercase">Software · Embedded · AI</div>
+          <p class="font-body text-lg md:text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+            Computer Engineering student building embedded systems, AI-assisted applications, and community-focused technology that holds up under real-world pressure.
           </p>
+        </div>
 
-          <div class="contact-table reveal">
-            <a href="Resume.pdf" class="contact-row" download>
-              <span class="contact-key">Resume</span>
-              <span class="contact-val">Download PDF</span>
-              <span class="contact-arr">â†’</span>
-            </a>
-            <a href="https://wa.me/639708199724" target="_blank" rel="noopener" class="contact-row">
-              <span class="contact-key">WhatsApp</span>
-              <span class="contact-val">0970 819 9724</span>
-              <span class="contact-arr">â†’</span>
-            </a>
-            <a href="mailto:boctulanm@gmail.com" class="contact-row">
-              <span class="contact-key">Email</span>
-              <span class="contact-val">boctulanm@gmail.com</span>
-              <span class="contact-arr">â†’</span>
-            </a>
-            <a href="https://github.com/MarkHubertB" target="_blank" rel="noopener" class="contact-row">
-              <span class="contact-key">GitHub</span>
-              <span class="contact-val">github.com/MarkHubertB</span>
-              <span class="contact-arr">â†’</span>
-            </a>
-            <a href="https://www.linkedin.com/in/markhubertboctulan/" target="_blank" rel="noopener" class="contact-row">
-              <span class="contact-key">LinkedIn</span>
-              <span class="contact-val">linkedin.com/in/markhubertboctulan</span>
-              <span class="contact-arr">â†’</span>
-            </a>
-            <div class="contact-row">
-              <span class="contact-key">Location</span>
-              <span class="contact-val">Cogon, Tagbilaran City, Bohol</span>
-              <span class="contact-arr"></span>
+        <div class="flex flex-wrap gap-4 mt-4">
+          <a class="px-8 py-4 bg-primary text-background font-mono text-xs tracking-widest uppercase font-bold hover:brightness-110 transition-all flex items-center gap-2" href="#projects">
+            View My Work
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </a>
+          <a class="px-8 py-4 border border-primary text-primary font-mono text-xs tracking-widest uppercase hover:bg-primary/5 transition-all" href="#contact">
+            Let's Connect
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Real profile photo in corner-bracket frame -->
+      <div class="md:col-span-4 relative reveal" style="transition-delay:200ms;">
+        <div class="corner-bracket bracket-tl bracket-tr bracket-bl bracket-br p-2 border border-outline-variant/10">
+          <div class="aspect-[4/5] bg-surface-container overflow-hidden group">
+            <img
+              class="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-1000 opacity-85 group-hover:opacity-100"
+              src="assets/Profile.png"
+              alt="Mark Hubert Boctulan"
+            />
+          </div>
+        </div>
+        <div class="mt-4 flex justify-between items-start">
+          <div>
+            <p class="font-mono text-[10px] text-primary tracking-tighter uppercase">Subject ID // 001</p>
+            <p class="font-mono text-[11px] text-on-surface-variant">Mark Hubert Boctulan</p>
+          </div>
+          <p class="font-mono text-[11px] text-outline text-right uppercase">Software<br/>Developer</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2">
+      <span class="font-mono text-[9px] text-outline tracking-widest uppercase">Scroll to probe</span>
+      <span class="material-symbols-outlined text-primary scroll-indicator">keyboard_double_arrow_down</span>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section class="py-32 border-t border-outline-variant/10 reveal" id="about">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+      <div class="md:col-span-4">
+        <span class="font-mono text-[11px] text-primary tracking-widest uppercase block mb-4">// CORE PRINCIPLE</span>
+        <h2 class="font-headline text-4xl md:text-5xl text-on-surface leading-tight">Building with purpose</h2>
+      </div>
+      <div class="md:col-span-8 space-y-8">
+        <p class="font-body text-xl text-on-surface-variant leading-relaxed">
+          I'm a Computer Engineering student who likes turning ideas into tools people can actually use. My work sits at the intersection of software, hardware, and interface design, with a strong focus on clarity, reliability, and usefulness in real situations.
+        </p>
+        <p class="font-body text-lg text-on-surface-variant/80 leading-relaxed max-w-3xl">
+          I built projects like disaster-response PWAs, AI-powered classification tools, and embedded systems because I want to grow into an engineer who can solve practical problems for communities and organizations — not just ship polished demos.
+        </p>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-8 pt-8">
+          <div>
+            <div class="text-3xl font-headline text-primary mb-1">03</div>
+            <div class="font-mono text-[10px] text-outline tracking-widest uppercase">Featured Projects</div>
+          </div>
+          <div>
+            <div class="text-3xl font-headline text-primary mb-1">3rd</div>
+            <div class="font-mono text-[10px] text-outline tracking-widest uppercase">Year at BISU</div>
+          </div>
+          <div>
+            <div class="text-3xl font-headline text-primary mb-1">2027</div>
+            <div class="font-mono text-[10px] text-outline tracking-widest uppercase">Expected Grad.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS — TECHNICAL SPECIFICATIONS ── -->
+  <section class="py-32 border-t border-outline-variant/10" id="skills">
+    <div class="mb-20 reveal">
+      <span class="font-mono text-[11px] text-primary tracking-widest uppercase block mb-4">// TECHNICAL SPECIFICATIONS</span>
+      <h2 class="font-headline text-4xl md:text-5xl text-on-surface">Capabilities</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-outline-variant/20 border border-outline-variant/20 reveal">
+
+      <!-- 01 Web & PWA -->
+      <div class="bg-background p-8 group hover:bg-surface-container-low transition-colors duration-300">
+        <span class="font-mono text-[10px] text-outline block mb-6">01 // WEB &amp; PWA</span>
+        <span class="material-symbols-outlined text-primary mb-4 text-3xl">terminal</span>
+        <h3 class="font-headline text-2xl text-on-surface mb-4">Frontend Systems</h3>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8">
+          Building offline-first Progressive Web Apps with real-time database sync, push notifications, and low-connectivity resilience.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <span class="font-mono text-[10px] tech-chip">JavaScript</span>
+          <span class="font-mono text-[10px] tech-chip">Firebase</span>
+          <span class="font-mono text-[10px] tech-chip">HTML/CSS</span>
+        </div>
+      </div>
+
+      <!-- 02 Mobile -->
+      <div class="bg-background p-8 group hover:bg-surface-container-low transition-colors duration-300">
+        <span class="font-mono text-[10px] text-outline block mb-6">02 // MOBILE</span>
+        <span class="material-symbols-outlined text-primary mb-4 text-3xl">smartphone</span>
+        <h3 class="font-headline text-2xl text-on-surface mb-4">Cross-Platform</h3>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8">
+          Cross-platform mobile apps with Flutter and Dart, from UI design to native device integration and camera API access.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <span class="font-mono text-[10px] tech-chip">Flutter</span>
+          <span class="font-mono text-[10px] tech-chip">Dart</span>
+          <span class="font-mono text-[10px] tech-chip">Android Studio</span>
+        </div>
+      </div>
+
+      <!-- 03 AI / ML -->
+      <div class="bg-background p-8 group hover:bg-surface-container-low transition-colors duration-300">
+        <span class="font-mono text-[10px] text-outline block mb-6">03 // AI &amp; ML</span>
+        <span class="material-symbols-outlined text-primary mb-4 text-3xl">psychology</span>
+        <h3 class="font-headline text-2xl text-on-surface mb-4">On-device Vision</h3>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8">
+          Training and deploying CNN-based image classifiers using Python and TensorFlow Lite for real-time, offline inference on mobile devices.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <span class="font-mono text-[10px] tech-chip">Python</span>
+          <span class="font-mono text-[10px] tech-chip">TFLite</span>
+          <span class="font-mono text-[10px] tech-chip">Google Colab</span>
+        </div>
+      </div>
+
+      <!-- 04 Embedded -->
+      <div class="bg-background p-8 group hover:bg-surface-container-low transition-colors duration-300">
+        <span class="font-mono text-[10px] text-outline block mb-6">04 // EMBEDDED</span>
+        <span class="material-symbols-outlined text-primary mb-4 text-3xl">memory</span>
+        <h3 class="font-headline text-2xl text-on-surface mb-4">Hardware Logic</h3>
+        <p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8">
+          Microcontroller programming with sensor integration, ISR debouncing, and state machine design for reliable embedded control.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <span class="font-mono text-[10px] tech-chip">C++</span>
+          <span class="font-mono text-[10px] tech-chip">Arduino</span>
+          <span class="font-mono text-[10px] tech-chip">ESP32</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tools row -->
+    <div class="mt-6 p-6 border border-outline-variant/20 reveal">
+      <span class="font-mono text-[9px] text-outline uppercase tracking-widest block mb-4">// Tools &amp; Environments</span>
+      <div class="flex flex-wrap gap-3">
+        <span class="font-mono text-[10px] tech-chip">VS Code</span>
+        <span class="font-mono text-[10px] tech-chip">Android Studio</span>
+        <span class="font-mono text-[10px] tech-chip">Google Colab</span>
+        <span class="font-mono text-[10px] tech-chip">Firebase</span>
+        <span class="font-mono text-[10px] tech-chip">Supabase</span>
+        <span class="font-mono text-[10px] tech-chip">Flutter SDK</span>
+        <span class="font-mono text-[10px] tech-chip">Arduino IDE</span>
+        <span class="font-mono text-[10px] tech-chip">Git &amp; GitHub</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS — PROJECT ARCHIVE ── -->
+  <section class="py-32 border-t border-outline-variant/10" id="projects">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-6 reveal">
+      <div>
+        <span class="font-mono text-[11px] text-primary tracking-widest uppercase block mb-4">// PROJECT ARCHIVE</span>
+        <h2 class="font-headline text-4xl md:text-5xl text-on-surface">Featured Work</h2>
+      </div>
+      <div class="font-mono text-[10px] text-outline uppercase text-right leading-tight tracking-widest">
+        RECORDS: 003 FOUND<br/>FORMAT: ENGINEERING SPEC
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-24">
+
+      <!-- Project 01: Resilink -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start reveal">
+        <div class="lg:col-span-7 group cursor-pointer" onclick="openDialog('resilink-modal', this)">
+          <div class="corner-bracket bracket-tl bracket-tr bracket-bl bracket-br p-1 border border-outline-variant/20 overflow-hidden">
+            <div class="aspect-[16/9] bg-surface-container relative overflow-hidden">
+              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-70 group-hover:opacity-90"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVlnZorS042LLIQgClw44nww55eofMWhyxvhJUz2DriMWINl_JOcwx6z8N9OVK370ozDeEk7d1VViJIUSqjAhMExUVphNW_EnLteOHFbnwNBcd5sf6O20hE6_qt-N3z_MFAeZlDI9FP123GlB6fabLxTDTfxomIVx39Ezof8YS6bl4w-_XdatkJDnAwkw5kBhg0AKiDYha5gMUjfn14MK3YVNpIKCQlkNdM3V7y7SiNOc8wzqeDDrDgk87zDAfsmEJa2iWR-yRmNpL"
+                alt="Resilink disaster response PWA interface"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+              <div class="absolute bottom-6 left-6">
+                <p class="font-mono text-[10px] text-primary tracking-widest uppercase mb-1">FIG. 01 // INTERFACE OVERVIEW</p>
+                <h3 class="font-headline text-3xl text-on-surface">Resilink</h3>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+        <div class="lg:col-span-5 flex flex-col gap-6 pt-4">
+          <div class="flex gap-2">
+            <span class="px-2 py-1 bg-primary/10 border border-primary/20 font-mono text-[9px] text-primary uppercase">PWA</span>
+            <span class="px-2 py-1 bg-primary/10 border border-primary/20 font-mono text-[9px] text-primary uppercase">Disaster Management</span>
+          </div>
+          <p class="font-body text-on-surface-variant leading-relaxed">
+            A disaster response Progressive Web App built for LGU coordination in Bohol. Features real-time Firestore sync, FCM push notifications, full offline support, and a Leaflet-powered live map with evacuation centers and heritage site layers.
+          </p>
+          <div class="border-y border-outline-variant/10 py-6 grid grid-cols-2 gap-4">
+            <div>
+              <span class="font-mono text-[9px] text-outline uppercase block mb-1">Stack</span>
+              <span class="font-mono text-[11px] text-on-surface">JavaScript, Firebase, PWA</span>
+            </div>
+            <div>
+              <span class="font-mono text-[9px] text-outline uppercase block mb-1">Role</span>
+              <span class="font-mono text-[11px] text-on-surface">Lead Web Developer</span>
+            </div>
+          </div>
+          <button class="flex items-center gap-4 group" onclick="openDialog('resilink-modal', this)">
+            <span class="font-mono text-[11px] tracking-widest uppercase text-primary group-hover:underline">Inspect technical details</span>
+            <span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">arrow_forward</span>
+          </button>
+        </div>
+      </div>
 
-      <!-- â”€â”€ FOOTER â”€â”€ -->
-      <footer>
-        <span>Â© 2026 Mark Hubert Boctulan</span>
-        <span>Computer Engineering Â· BISU</span>
-      </footer>
-    </main>
+      <!-- Project 02: TimberScan -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start reveal" style="transition-delay:100ms;">
+        <div class="lg:col-span-5 flex flex-col gap-6 pt-4 order-2 lg:order-1">
+          <div class="flex gap-2">
+            <span class="px-2 py-1 bg-primary/10 border border-primary/20 font-mono text-[9px] text-primary uppercase">Mobile</span>
+            <span class="px-2 py-1 bg-primary/10 border border-primary/20 font-mono text-[9px] text-primary uppercase">Computer Vision</span>
+          </div>
+          <h3 class="font-headline text-3xl text-on-surface">TimberScan</h3>
+          <p class="font-body text-on-surface-variant leading-relaxed">
+            Flutter mobile app that classifies lumber types from live camera images using a trained CNN. Model built in Google Colab, converted to TensorFlow Lite, and deployed on-device for real-time inference without internet dependency.
+          </p>
+          <div class="border-y border-outline-variant/10 py-6 grid grid-cols-2 gap-4">
+            <div>
+              <span class="font-mono text-[9px] text-outline uppercase block mb-1">Stack</span>
+              <span class="font-mono text-[11px] text-on-surface">Flutter, TensorFlow Lite</span>
+            </div>
+            <div>
+              <span class="font-mono text-[9px] text-outline uppercase block mb-1">Role</span>
+              <span class="font-mono text-[11px] text-on-surface">Lead Developer</span>
+            </div>
+          </div>
+          <button class="flex items-center gap-4 group" onclick="openDialog('timberscan-modal', this)">
+            <span class="font-mono text-[11px] tracking-widest uppercase text-primary group-hover:underline">Inspect technical details</span>
+            <span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">arrow_forward</span>
+          </button>
+        </div>
+        <div class="lg:col-span-7 group cursor-pointer order-1 lg:order-2" onclick="openDialog('timberscan-modal', this)">
+          <div class="corner-bracket bracket-tl bracket-tr bracket-bl bracket-br p-1 border border-outline-variant/20 overflow-hidden">
+            <div class="aspect-[16/9] bg-surface-container relative overflow-hidden">
+              <img class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 opacity-70 group-hover:opacity-90"
+                src="assets/TimberScan.jpg"
+                alt="TimberScan lumber identification app screen"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+              <div class="absolute bottom-6 left-6">
+                <p class="font-mono text-[10px] text-primary tracking-widest uppercase mb-1">FIG. 02 // VISION PROCESSING</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <script>
-      const observer = new IntersectionObserver(
-        (entries) =>
-          entries.forEach((e) => {
-            if (e.isIntersecting) e.target.classList.add("visible");
-          }),
-        { threshold: 0.1 },
-      );
-      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+      <!-- Project 03: BaoMeter -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start reveal" style="transition-delay:200ms;">
+        <div class="lg:col-span-7 group cursor-pointer" onclick="openDialog('baometer-modal', this)">
+          <div class="corner-bracket bracket-tl bracket-tr bracket-bl bracket-br p-1 border border-outline-variant/20 overflow-hidden">
+            <div class="aspect-[16/9] bg-surface-container relative overflow-hidden">
+              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-70 group-hover:opacity-90"
+                src="assets/BaoMeter.jpg"
+                alt="BaoMeter electronic fare system prototype"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60"></div>
+              <div class="absolute bottom-6 left-6">
+                <p class="font-mono text-[10px] text-primary tracking-widest uppercase mb-1">FIG. 03 // SYSTEMS ARCHITECTURE</p>
+                <h3 class="font-headline text-3xl text-on-surface">BaoMeter</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-5 flex flex-col gap-6 pt-4">
+          <div class="flex gap-2">
+            <span class="px-2 py-1 bg-primary/10 border border-primary/20 font-mono text-[9px] text-primary uppercase">Embedded</span>
+            <span class="px-2 py-1 bg-primary/10 border border-primary/20 font-mono text-[9px] text-primary uppercase">IoT</span>
+          </div>
+          <p class="font-body text-on-surface-variant leading-relaxed">
+            Hall sensor-based electronic fare system for BaoBao vehicles. Implements ISR debouncing for reliable sensor input and a READY → COUNTING → STOPPED state machine for accurate passenger counting and automated fare computation.
+          </p>
+          <div class="border-y border-outline-variant/10 py-6 grid grid-cols-2 gap-4">
+            <div>
+              <span class="font-mono text-[9px] text-outline uppercase block mb-1">Stack</span>
+              <span class="font-mono text-[11px] text-on-surface">C++, Arduino, Hall Sensor</span>
+            </div>
+            <div>
+              <span class="font-mono text-[9px] text-outline uppercase block mb-1">Role</span>
+              <span class="font-mono text-[11px] text-on-surface">Systems Integrator</span>
+            </div>
+          </div>
+          <button class="flex items-center gap-4 group" onclick="openDialog('baometer-modal', this)">
+            <span class="font-mono text-[11px] tracking-widest uppercase text-primary group-hover:underline">Inspect technical details</span>
+            <span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">arrow_forward</span>
+          </button>
+        </div>
+      </div>
 
-      let lastDialogTrigger = null;
+    </div>
+  </section>
 
-      function getOpenDialog() {
-        return document.querySelector(".modal-overlay.open, .lightbox.open");
-      }
+  <!-- ── EDUCATION ── -->
+  <section class="py-32 border-t border-outline-variant/10" id="education">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 reveal">
+      <div class="md:col-span-4">
+        <span class="font-mono text-[11px] text-primary tracking-widest uppercase block mb-4">// ACADEMIC RECORD</span>
+        <h2 class="font-headline text-4xl md:text-5xl text-on-surface leading-tight">Education</h2>
+      </div>
+      <div class="md:col-span-8">
+        <div class="relative pl-12 border-l border-outline-variant/20 py-4">
+          <div class="absolute -left-[5px] top-4 w-[9px] h-[9px] bg-primary"></div>
+          <div class="mb-4">
+            <span class="font-mono text-[11px] text-outline tracking-widest uppercase">2022 — PRESENT</span>
+            <h3 class="font-headline text-2xl text-on-surface mt-2">Bohol Island State University (BISU)</h3>
+            <p class="font-mono text-primary text-sm uppercase mt-1">Bachelor of Science in Computer Engineering</p>
+          </div>
+          <p class="font-body text-on-surface-variant leading-relaxed max-w-2xl">
+            Currently 3rd year, with an expected graduation of 2027. Focused on embedded systems, software development, and applied machine learning. Building practical projects for communities in Tagbilaran City, Bohol.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+            <div class="p-4 bg-surface-container-low border border-outline-variant/10">
+              <p class="font-mono text-[9px] text-outline uppercase">Major Competencies</p>
+              <p class="font-body text-xs text-on-surface-variant mt-2">Microprocessors, Operating Systems, Algorithm Analysis, Data Structures, Embedded Systems.</p>
+            </div>
+            <div class="p-4 bg-surface-container-low border border-outline-variant/10">
+              <p class="font-mono text-[9px] text-outline uppercase">Research Interest</p>
+              <p class="font-body text-xs text-on-surface-variant mt-2">On-device AI inference, disaster-resilient communication systems, and embedded sensor networks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      function getFocusableElements(dialog) {
-        return Array.from(
-          dialog.querySelectorAll(
-            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-          ),
-        ).filter((element) => !element.hasAttribute("disabled"));
-      }
+  <!-- ── CONTACT ── -->
+  <section class="py-32 border-t border-outline-variant/10 mb-20" id="contact">
+    <div class="max-w-4xl mx-auto text-center reveal">
+      <span class="font-mono text-[11px] text-primary tracking-widest uppercase block mb-6">// AVAILABILITY: OPEN TO OPPORTUNITIES</span>
+      <h2 class="font-headline text-5xl md:text-7xl text-on-surface leading-tight mb-12">Let's Build Something That Lasts</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mt-20">
+        <div class="space-y-6">
+          <a class="flex justify-between items-center py-6 border-b border-outline-variant/20 group" href="Resume.pdf" download>
+            <div>
+              <p class="font-mono text-[10px] text-outline uppercase">Digital Archive</p>
+              <p class="font-body text-lg text-on-surface group-hover:text-primary transition-colors">Resume / CV</p>
+            </div>
+            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">download</span>
+          </a>
+          <a class="flex justify-between items-center py-6 border-b border-outline-variant/20 group" href="mailto:boctulanm@gmail.com">
+            <div>
+              <p class="font-mono text-[10px] text-outline uppercase">Direct Line</p>
+              <p class="font-body text-lg text-on-surface group-hover:text-primary transition-colors">boctulanm@gmail.com</p>
+            </div>
+            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">mail</span>
+          </a>
+          <a class="flex justify-between items-center py-6 border-b border-outline-variant/20 group" href="https://wa.me/639708199724" target="_blank" rel="noopener">
+            <div>
+              <p class="font-mono text-[10px] text-outline uppercase">Phone / WhatsApp</p>
+              <p class="font-body text-lg text-on-surface group-hover:text-primary transition-colors">0970 819 9724</p>
+            </div>
+            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">call</span>
+          </a>
+        </div>
+        <div class="space-y-6">
+          <a class="flex justify-between items-center py-6 border-b border-outline-variant/20 group" href="https://github.com/MarkHubertB" target="_blank" rel="noopener">
+            <div>
+              <p class="font-mono text-[10px] text-outline uppercase">Repository</p>
+              <p class="font-body text-lg text-on-surface group-hover:text-primary transition-colors">github.com/MarkHubertB</p>
+            </div>
+            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">code</span>
+          </a>
+          <a class="flex justify-between items-center py-6 border-b border-outline-variant/20 group" href="https://www.linkedin.com/in/markhubertboctulan/" target="_blank" rel="noopener">
+            <div>
+              <p class="font-mono text-[10px] text-outline uppercase">Network</p>
+              <p class="font-body text-lg text-on-surface group-hover:text-primary transition-colors">linkedin.com/in/markhubertboctulan</p>
+            </div>
+            <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">share</span>
+          </a>
+          <div class="flex justify-between items-center py-6 border-b border-outline-variant/20">
+            <div>
+              <p class="font-mono text-[10px] text-outline uppercase">Geographic Hub</p>
+              <p class="font-body text-lg text-on-surface">Cogon, Tagbilaran City, Bohol</p>
+            </div>
+            <span class="material-symbols-outlined text-outline">location_on</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      function focusDialog(dialog) {
-        if (!dialog) return;
-        const focusables = getFocusableElements(dialog);
-        const target = focusables[0] || dialog;
-        if (!target.hasAttribute("tabindex")) {
-          dialog.setAttribute("tabindex", "-1");
-        }
-        target.focus();
-      }
+</main>
 
-      function openDialog(id, trigger) {
-        const dialog = document.getElementById(id);
-        if (!dialog) return;
-        if (!getOpenDialog()) {
-          lastDialogTrigger = trigger || document.activeElement;
-        }
-        dialog.classList.add("open");
-        requestAnimationFrame(() => focusDialog(dialog));
-      }
+<!-- ── FOOTER ── -->
+<footer class="border-t border-outline-variant/20 bg-background py-12 px-margin-mobile md:px-margin-desktop">
+  <div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+    <div class="font-mono text-[11px] text-primary tracking-widest uppercase">MHB // ARCHIVAL RECORD</div>
+    <div class="flex gap-8">
+      <a class="font-mono text-[10px] text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest" href="#about">About</a>
+      <a class="font-mono text-[10px] text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest" href="#projects">Projects</a>
+      <a class="font-mono text-[10px] text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest" href="#contact">Contact</a>
+    </div>
+    <div class="font-mono text-[11px] text-on-surface-variant/40">© 2026 MARK HUBERT BOCTULAN. ALL RIGHTS RESERVED.</div>
+  </div>
+</footer>
 
-      function closeDialog(id) {
-        const dialog = document.getElementById(id);
-        if (!dialog) return;
-        dialog.classList.remove("open");
+<script>
+  function toggleDrawer() {
+    const drawer = document.getElementById('nav-drawer');
+    drawer.classList.toggle('translate-x-full');
+  }
 
-        const openDialogEl = getOpenDialog();
-        if (openDialogEl) {
-          requestAnimationFrame(() => focusDialog(openDialogEl));
-          return;
-        }
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('active');
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        if (lastDialogTrigger && typeof lastDialogTrigger.focus === "function") {
-          requestAnimationFrame(() => lastDialogTrigger.focus());
-        }
-      }
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
 
-      document.addEventListener("keydown", (event) => {
-        const dialog = getOpenDialog();
-        if (!dialog) return;
+  // ── MODAL SYSTEM (real screenshot modals) ──
+  let lastDialogTrigger = null;
 
-        if (event.key === "Escape") {
-          event.preventDefault();
-          closeDialog(dialog.id);
-          return;
-        }
+  function getOpenDialog() {
+    return document.querySelector('.modal-overlay.open, .lightbox.open');
+  }
 
-        if (event.key !== "Tab") return;
+  function getFocusableElements(dialog) {
+    return Array.from(
+      dialog.querySelectorAll('button,[href],input,select,textarea,[tabindex]:not([tabindex="-1"])')
+    ).filter(el => !el.hasAttribute('disabled'));
+  }
 
-        const focusables = getFocusableElements(dialog);
-        if (!focusables.length) {
-          event.preventDefault();
-          dialog.focus();
-          return;
-        }
+  function focusDialog(dialog) {
+    if (!dialog) return;
+    const focusables = getFocusableElements(dialog);
+    const target = focusables[0] || dialog;
+    if (!target.hasAttribute('tabindex')) dialog.setAttribute('tabindex', '-1');
+    target.focus();
+  }
 
-        const first = focusables[0];
-        const last = focusables[focusables.length - 1];
+  function openDialog(id, trigger) {
+    const dialog = document.getElementById(id);
+    if (!dialog) return;
+    if (!getOpenDialog()) lastDialogTrigger = trigger || document.activeElement;
+    dialog.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => focusDialog(dialog));
+  }
 
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault();
-          last.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault();
-          first.focus();
-        }
-      });
+  function closeDialog(id) {
+    const dialog = document.getElementById(id);
+    if (!dialog) return;
+    dialog.classList.remove('open');
+    document.body.style.overflow = '';
+    const openDialogEl = getOpenDialog();
+    if (openDialogEl) { requestAnimationFrame(() => focusDialog(openDialogEl)); return; }
+    if (lastDialogTrigger && typeof lastDialogTrigger.focus === 'function') {
+      requestAnimationFrame(() => lastDialogTrigger.focus());
+    }
+  }
 
-      // Keyboard support for project title links
-      document.querySelectorAll('.project-title-link').forEach(el => {
-        el.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            el.click();
-          }
-        });
-      });
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    openDialog('lightbox');
+  }
 
-      const navToggle = document.querySelector(".nav-toggle");
-      const navLinks = document.querySelector(".nav-links");
+  document.addEventListener('keydown', (event) => {
+    const dialog = getOpenDialog();
+    if (!dialog) return;
+    if (event.key === 'Escape') { event.preventDefault(); closeDialog(dialog.id); return; }
+    if (event.key !== 'Tab') return;
+    const focusables = getFocusableElements(dialog);
+    if (!focusables.length) { event.preventDefault(); dialog.focus(); return; }
+    const first = focusables[0];
+    const last  = focusables[focusables.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  });
+</script>
 
-      function setNavOpen(isOpen) {
-        if (!navToggle || !navLinks) return;
-        navToggle.classList.toggle("open", isOpen);
-        navLinks.classList.toggle("open", isOpen);
-        navToggle.setAttribute("aria-expanded", String(isOpen));
-        navToggle.setAttribute(
-          "aria-label",
-          isOpen ? "Close navigation menu" : "Open navigation menu",
-        );
-      }
-
-      if (navToggle && navLinks) {
-        navToggle.addEventListener("click", () => {
-          setNavOpen(!navLinks.classList.contains("open"));
-        });
-
-        navLinks.addEventListener("click", (event) => {
-          if (event.target.closest("a")) {
-            setNavOpen(false);
-          }
-        });
-
-        window.addEventListener("resize", () => {
-          if (window.innerWidth > 720) {
-            setNavOpen(false);
-          }
-        });
-      }
-    </script>
-
-
-        <!-- RESILINK MODAL -->
+    <!-- RESILINK MODAL -->
     <div
       class="modal-overlay"
       id="resilink-modal"
@@ -1760,10 +935,10 @@
           onclick="closeDialog('resilink-modal')"
           aria-label="Close dialog"
         >
-          âœ•
+          ✕
         </button>
-        <div class="modal-label">Lead Web Developer Â· Jan â€“ Apr 2026</div>
-        <h2 class="modal-title">Resilink â€” Disaster Response PWA</h2>
+        <div class="modal-label">Lead Web Developer · Jan – Apr 2026</div>
+        <h2 class="modal-title">Resilink — Disaster Response PWA</h2>
         <p class="modal-desc">
           Resilink is a Progressive Web App designed for LGU disaster response
           coordination across Antequera and San Isidro, Bohol. It provides
@@ -1842,8 +1017,8 @@
             </div>
             <div class="modal-screenshot-label">Home Screen</div>
             <div class="modal-screenshot-desc">
-              Main dashboard for LGU personnel showing all modules â€” Map View,
-              Reports, Heritage, Announcements, Survival Guides, and Dashboard â€”
+              Main dashboard for LGU personnel showing all modules — Map View,
+              Reports, Heritage, Announcements, Survival Guides, and Dashboard —
               with a live status indicator.
             </div>
           </div>
@@ -1861,7 +1036,7 @@
             <div class="modal-screenshot-desc">
               Leaflet-powered map of Antequera, Bohol showing real-time pins for
               community reports, evacuation center statuses, and heritage sites
-              â€” filterable by layer.
+              — filterable by layer.
             </div>
           </div>
           <div>
@@ -1877,7 +1052,7 @@
             <div class="modal-screenshot-label">Disaster Guides</div>
             <div class="modal-screenshot-desc">
               Typhoon preparedness guide with 30 actionable tips split into
-              Before, During, and After phases â€” tailored for the Philippine
+              Before, During, and After phases — tailored for the Philippine
               context with PAGASA references.
             </div>
           </div>
@@ -1894,7 +1069,7 @@
             <div class="modal-screenshot-label">Resource Guides</div>
             <div class="modal-screenshot-desc">
               Community resource library covering Renewable Energy, Water
-              Purification, Waste Management, and Disaster Preparedness â€” with
+              Purification, Waste Management, and Disaster Preparedness — with
               collapsible topic sections.
             </div>
           </div>
@@ -1911,7 +1086,7 @@
             <div class="modal-screenshot-label">Announcements</div>
             <div class="modal-screenshot-desc">
               LGU announcement board for posting categorized notices. Supports
-              offline sync â€” posts queue locally and push to Firestore once back
+              offline sync — posts queue locally and push to Firestore once back
               online.
             </div>
           </div>
@@ -1928,7 +1103,7 @@
             <div class="modal-screenshot-label">Heritage Reports</div>
             <div class="modal-screenshot-desc">
               Site observation logs for local heritage structures. Each report
-              tracks status, submission date, and condition â€” helping LGU
+              tracks status, submission date, and condition — helping LGU
               monitor cultural assets during disasters.
             </div>
           </div>
@@ -1952,15 +1127,15 @@
           onclick="closeDialog('baometer-modal')"
           aria-label="Close dialog"
         >
-          âœ•
+          ✕
         </button>
-        <div class="modal-label">Systems Integrator Â· Jan â€“ Apr 2026</div>
-        <h2 class="modal-title">BaoMeter â€” Smart Fare System</h2>
+        <div class="modal-label">Systems Integrator · Jan – Apr 2026</div>
+        <h2 class="modal-title">BaoMeter — Smart Fare System</h2>
         <p class="modal-desc">
           BaoMeter is a Hall sensor-based electronic fare system designed for
           baobao vehicles. It implements advanced ISR debouncing techniques for
-          reliable sensor input handling and features a sophisticated READY â†’
-          COUNTING â†’ STOPPED state machine for accurate real-time passenger
+          reliable sensor input handling and features a sophisticated READY →
+          COUNTING → STOPPED state machine for accurate real-time passenger
           counting and automated fare computation. The system provides precise
           vehicle occupancy tracking and seamless fare calculations for
           transportation operators.
@@ -1985,7 +1160,7 @@
               onclick="openLightbox(this.querySelector('img').src)"
             >
               <img
-                src="assets/705166462_2882263418802190_461810599485085043_n.jpg"
+                src="assets/BaoMeter.jpg"
                 alt="BaoMeter hardware setup"
               />
             </div>
@@ -2002,13 +1177,13 @@
               onclick="openLightbox(this.querySelector('img').src)"
             >
               <img
-                src="assets/707247534_1675142616867773_1615394217415439400_n.jpg"
+                src="assets/BaoMeter.jpg"
                 alt="BaoMeter state machine diagram"
               />
             </div>
             <div class="modal-screenshot-label">State Machine</div>
             <div class="modal-screenshot-desc">
-              READY â†’ COUNTING â†’ STOPPED logic for passenger tracking
+              READY → COUNTING → STOPPED logic for passenger tracking
             </div>
           </div>
 
@@ -2018,7 +1193,7 @@
               onclick="openLightbox(this.querySelector('img').src)"
             >
               <img
-                src="assets/705166462_2882263418802190_461810599485085043_n.jpg"
+                src="assets/BaoMeter.jpg"
                 alt="BaoMeter fare display"
               />
             </div>
@@ -2047,10 +1222,10 @@
           onclick="closeDialog('timberscan-modal')"
           aria-label="Close dialog"
         >
-          âœ•
+          ✕
         </button>
-        <div class="modal-label">App Developer Â· Jan â€“ Apr 2026</div>
-        <h2 class="modal-title">TimberScan â€” AI Wood Identification</h2>
+        <div class="modal-label">App Developer · Jan – Apr 2026</div>
+        <h2 class="modal-title">TimberScan — AI Wood Identification</h2>
         <p class="modal-desc">
           TimberScan is a Flutter mobile application powered by a Convolutional
           Neural Network trained to classify lumber types from live camera
@@ -2100,7 +1275,7 @@
               onclick="openLightbox(this.querySelector('img').src)"
             >
               <img
-                src="assets/705166462_2882263418802190_461810599485085043_n.jpg"
+                src="assets/TimberScan.jpg"
                 alt="TimberScan home screen"
               />
             </div>
@@ -2116,7 +1291,7 @@
               onclick="openLightbox(this.querySelector('img').src)"
             >
               <img
-                src="assets/707247534_1675142616867773_1615394217415439400_n.jpg"
+                src="assets/TimberScan2.jpg"
                 alt="TimberScan prediction result"
               />
             </div>
@@ -2133,7 +1308,7 @@
               onclick="openLightbox(this.querySelector('img').src)"
             >
               <img
-                src="assets/705166462_2882263418802190_461810599485085043_n.jpg"
+                src="assets/TimberScan.jpg"
                 alt="TimberScan wood species list"
               />
             </div>
@@ -2162,7 +1337,7 @@
         onclick="closeDialog('lightbox')"
         aria-label="Close dialog"
       >
-        âœ•
+        ✕
       </button>
       <img id="lightbox-img" src="" alt="Screenshot fullscreen" />
     </div>
@@ -2176,5 +1351,6 @@
         }
       }
     </script>
-  </body>
+
+</body>
 </html>
